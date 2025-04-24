@@ -1,12 +1,12 @@
 #pragma once
-#include "StringField.h"
+#include "NamesField.h"
 
-class Name : public StringField {
+class Name : public NamesField {
 
 public:
-	Name(const std::string& label, flightType type);
+	Name(const std::string& label);
 
-	void validator() override;
+	void validator() override {};
 
 private:
 

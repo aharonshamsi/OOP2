@@ -192,8 +192,3 @@ void FlightBookingForm::handleInput(sf::Event event) {
 
 }
 
-
-
-
-
-

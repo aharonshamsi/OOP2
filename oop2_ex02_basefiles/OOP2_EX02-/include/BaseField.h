@@ -1,26 +1,43 @@
 ﻿#pragma once
 #include <iostream>
-#include "flightType.h"
+#include "AbstractField.h"
 
 template <class T>
-class BaseField {
+class BaseField : public AbstractField {
 
 public:
-	BaseField(const std::string& fiels, flightType type);
+
+	BaseField(const std::string& fiels);
 
 	virtual void validator() = 0; // פונקציה ווירטואלית לבדיקת תקינות
-	virtual void print() = 0;
+
+	void input() override;
+	void print() override;
 
 protected:
-	std::string m_label;
 	T m_userInput;
-	flightType m_type; // זה חופף לממבר שמייצג איזה שדה פעיל activeField 
 	bool m_isInputValid;
+
+
 };
 
 template<class T>
-inline BaseField<T>::BaseField(const std::string& label, flightType type)
-	:m_label(label), m_type(type), m_isInputValid(false)
+inline BaseField<T>::BaseField(const std::string& label)
+	:AbstractField(label),
+	m_isInputValid(false)
 {}
+
+
+template<class T>
+inline void BaseField<T>::input()
+{
+	std::cin >> m_userInput;
+}
+
+template<class T>
+inline void BaseField<T>::print()
+{
+	std::cout << m_userInput;
+}
 
 

@@ -2,37 +2,35 @@
 #include <algorithm>
 
 
-Id::Id(const std::string& label, flightType type)
-	:StringField(label, type) {}
+Id::Id(const std::string& label)
+	:IntField(label) {}
 
 void Id::validator()
 {
-    while (!m_isInputValid) {
-        int totalId = 0;
-        std::cin >> m_userInput;
 
-        if (!isLengthValid())
-            continue;
+    std::string idStr = std::to_string(m_userInput); // ממיר למחרוזת
 
-        if (!isAllDigits())
-            continue;
-        
-        totalId = sumIsraeliID();
+    if (!isLengthValid(idStr))
+        m_isInputValid = false;
 
-        if (totalId % 10 == 0)
-            m_isInputValid = true;
-        else {
-            std::cout << "The Israeli ID card is not valid\n";
-            m_isInputValid = false;
-        }
+    if (!isAllDigits(idStr)) 
+        m_isInputValid = false;
+
+    int total = sumIsraeliID(idStr);
+
+    if (total % 10 == 0)
+        m_isInputValid = true;
+    else {
+        std::cout << "The Israeli ID card is not valid\n";
+        m_isInputValid = false;
     }
 
 }
 
 
-bool Id::isLengthValid() const
+bool Id::isLengthValid(const std::string& id) const
 {
-    if (m_userInput.size() > 9 || m_userInput.empty()) {
+    if (id.empty() || id.size() > 9) {
         std::cout << "ID must be up to 9 digits\n";
         return false;
     }
@@ -40,10 +38,9 @@ bool Id::isLengthValid() const
 }
 
 
-bool Id::isAllDigits() const
+bool Id::isAllDigits(const std::string& id) const
 {
-
-    if (!std::all_of(m_userInput.begin(), m_userInput.end(), ::isdigit)) { // זאת פונקציה מקבלת תחילה וסוף ותנאי שמספר 
+    if (!std::all_of(id.begin(), id.end(), ::isdigit)) {
         std::cout << "ID must contain digits only\n";
         return false;
     }
@@ -51,24 +48,15 @@ bool Id::isAllDigits() const
 }
 
 
-int Id::sumIsraeliID()
+int Id::sumIsraeliID(const std::string& id)
 {
     int total = 0;
-    for (size_t i = 0; i < m_userInput.size(); i++) {
-        int tempSum = 0;
-        int digit = m_userInput[i] - '0'; // המרה למספר
-
-        if (i % 2 == 0)
-            tempSum = digit * 1;
-
-        else if ((digit * 2) > 9)
-            tempSum = ((digit * 2) / 10) + ((digit * 2) % 10);
-
-        else
-            tempSum = digit * 2;
-
+    for (size_t i = 0; i < id.size(); i++) {
+        int digit = id[i] - '0';
+        int tempSum = (i % 2 == 0) ? digit : digit * 2;
+        if (tempSum > 9)
+            tempSum -= 9;
         total += tempSum;
     }
-
     return total;
 }

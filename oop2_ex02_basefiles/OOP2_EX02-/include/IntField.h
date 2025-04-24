@@ -4,11 +4,9 @@
 class IntField : public BaseField<int> {
 
 public:
-	IntField(const std::string& label, flightType type);
+	IntField(const std::string& label);
 
 	void validator() override {};
-	void print() override;
-
 
 private:
 

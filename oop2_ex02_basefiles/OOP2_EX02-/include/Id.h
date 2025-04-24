@@ -1,16 +1,18 @@
 #pragma once
-#include "StringField.h"
+#include "IntField.h"
+#include <string>
 
-class Id : public StringField {
+
+class Id : public IntField {
 
 public:
-	Id(const std::string& label, flightType type);
+	Id(const std::string& label);
 
 	void validator() override;
 
 
 private:
-	bool isLengthValid() const;
-	bool isAllDigits() const;
-	int sumIsraeliID();
+	bool isLengthValid(const std::string& id) const;
+	bool isAllDigits(const std::string& id) const;
+	int sumIsraeliID(const std::string& id);
 };
