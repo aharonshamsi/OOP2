@@ -6,13 +6,17 @@ template <class T>
 class BaseField : public AbstractField {
 
 public:
-
 	BaseField(const std::string& fiels);
 
 	virtual void validator() = 0; // פונקציה ווירטואלית לבדיקת תקינות
+	void printValidationError() override {};
 
 	void input() override;
 	void print() override;
+
+
+	void setUserInput(const T& input);
+	T getUserInput();
 
 protected:
 	T m_userInput;
@@ -38,6 +42,18 @@ template<class T>
 inline void BaseField<T>::print()
 {
 	std::cout << m_userInput;
+}
+
+template<class T>
+inline void BaseField<T>::setUserInput(const T& input)
+{
+	m_userInput = input;
+}
+
+template<class T>
+inline T BaseField<T>::getUserInput()
+{
+	return m_userInput;
 }
 
 

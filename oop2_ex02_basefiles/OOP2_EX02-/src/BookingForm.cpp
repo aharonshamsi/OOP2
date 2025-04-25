@@ -8,6 +8,7 @@ BookingForm::BookingForm(sf::RenderWindow& win, DialogueManager* manager) :windo
     userInput.resize(fieldLabels.size(), "");  // Initialize input fields
 }
 
+
 void BookingForm::openConfirmationWindow() {
     const std::string& formTitle = getFormType();
     sf::RenderWindow confirmWindow(sf::VideoMode(500, 600), "Confirm " + formTitle);
@@ -84,3 +85,16 @@ void BookingForm::openConfirmationWindow() {
         formManager->closeForm();
     }
 }
+
+
+
+/*========== my code =================================================
+======================================================================*/
+//BookingForm::BookingForm(sf::RenderWindow& win, DialogueManager* manager)
+//    :window(win), formManager(manager)
+//{
+//    m_fields.push_back(std::make_unique<Name>("Name: "));
+//    m_fields.push_back(std::make_unique<Id>("Id: "));
+//    m_fields.push_back(std::make_unique<Email>("Email: "));
+//    m_fields.push_back(std::make_unique<Address>("Address: "));
+//}

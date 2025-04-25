@@ -27,6 +27,12 @@ void Id::validator()
 
 }
 
+void Id::printValidationError()
+{
+    if(!m_isInputValid)
+        std::cout << "Error: The name is invalid. Only numbers are allowed." << std::endl;
+}
+
 
 bool Id::isLengthValid(const std::string& id) const
 {

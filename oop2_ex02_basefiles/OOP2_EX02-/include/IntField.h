@@ -7,6 +7,7 @@ public:
 	IntField(const std::string& label);
 
 	void validator() override {};
+	void printValidationError() override {};
 
 private:
 

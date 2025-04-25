@@ -5,6 +5,16 @@
 #include <vector>
 #include <string>
 #include <array>
+
+//=============================
+#include "AbstractField.h"
+#include "Name.h"
+#include "Id.h"
+#include "Email.h"
+#include "Address.h"
+//=============================
+
+
 class DialogueManager;
 
 struct PersonalInfo {
@@ -17,7 +27,23 @@ struct PersonalInfo {
 
 // מחלקת אב של טופס הזמנה
 class BookingForm {
+
+
+    /*========== my code ====================================
+    =========================================================*/
+public:
+    //BookingForm(sf::RenderWindow& win, DialogueManager* manager);
+
 protected:
+    std::vector < std::unique_ptr<AbstractField>> m_fields;
+
+
+
+
+
+
+    //========================================================
+
     std::vector<std::string> fieldLabels; // תווית שדה
     std::vector<std::string> userInput; //  תווית שדה הזנה משתמש
     std::size_t activeField = 0; // מספר שדה פעיל
