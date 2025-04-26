@@ -35,11 +35,14 @@ void Address::splitAddress()
 
 void Address::validNumStreet()
 {
-	try {
-		int numStreet = std::stoi(m_numStreet.getUserInput()); // נבדוק האם ההמרה למספר הצליחה
-		m_isInputValid = numStreet > 0;
+	std::string numStreet = m_numStreet.getUserInput();
+	m_isInputValid = !numStreet.empty(); // כלומר אם לא ריק מקבל אמת
+
+	for (char c : numStreet) {
+		if (!isdigit(c)) {
+			m_isInputValid = false;
+			break;
+		}
 	}
-	catch (const std::exception&) {
-		m_isInputValid = false;
-	}
+
 }
