@@ -9,7 +9,7 @@ Date::Date(const std::string& label)
 }
 
 
-void Date::validator()
+void Date::validat()
 {
 	// פה נבצע בדיקת תקינות של תאריך
 	m_isInputValid = true;

@@ -6,7 +6,7 @@ class Date : public StringField {
 public:
 	Date(const std::string& labal);
 
-	void validator() override;
+	void validat() override;
 	void printValidationError() override;
 
 private:

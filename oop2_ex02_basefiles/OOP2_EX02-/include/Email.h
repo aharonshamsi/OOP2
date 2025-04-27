@@ -6,6 +6,6 @@ class Email : public NamesField {
 public:
 	Email(const std::string& label);
 
-	void validator() override;
+	void validat() override;
 	void printValidationError() override;
 };

@@ -3,3 +3,8 @@
 StringField::StringField(const std::string& label)
 	:BaseField(label) {}
 
+void StringField::addChar(char ch)
+{
+	m_userInput += ch;
+}
+

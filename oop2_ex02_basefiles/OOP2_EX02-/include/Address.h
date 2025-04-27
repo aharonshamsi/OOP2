@@ -7,7 +7,7 @@ class Address : public NamesField {
 public:
 	Address(const std::string& label);
 
-	void validator() override;
+	void validat() override;
 	void printValidationError() override;
 
 private:

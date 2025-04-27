@@ -5,7 +5,7 @@ Email::Email(const std::string& label)
 {
 }
 
-void Email::validator()
+void Email::validat()
 {
 	// פה נבצע תקינות על אמייל
 }

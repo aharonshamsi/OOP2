@@ -6,7 +6,7 @@ NamesField::NamesField(const std::string& label)
 {
 }
 
-void NamesField::validator()
+void NamesField::validat()
 {
 	m_isInputValid = true;
 
@@ -20,8 +20,4 @@ void NamesField::validator()
 
 }
 
-void NamesField::printValidationError()
-{
-	if (!m_isInputValid)
-		std::cout << "Error: The name is invalid. Only alphabetic characters are allowed" << std::endl;
-}
+

@@ -31,14 +31,8 @@ class BookingForm {
 
     /*========== my code ====================================
     =========================================================*/
-public:
-    //BookingForm(sf::RenderWindow& win, DialogueManager* manager);
-
 protected:
     std::vector < std::unique_ptr<AbstractField>> m_fields;
-
-
-
 
 
 

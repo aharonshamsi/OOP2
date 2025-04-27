@@ -8,7 +8,7 @@ class Id : public IntField {
 public:
 	Id(const std::string& label);
 
-	void validator() override;
+	void validat() override;
 	void printValidationError() override;
 
 

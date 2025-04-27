@@ -4,6 +4,12 @@
 #include <ctime>  // For getting current date
 
 BookingForm::BookingForm(sf::RenderWindow& win, DialogueManager* manager) :window(win), formManager(manager) {
+
+    m_fields.push_back(std::make_unique<Name>("Name: "));
+    m_fields.push_back(std::make_unique<Id>("Id: "));
+    m_fields.push_back(std::make_unique<Email>("Email: "));
+    m_fields.push_back(std::make_unique<Address>("Address: "));
+
     fieldLabels = { "Name:", "ID:", "Address:", "Email:" };  // ✅ Add common fields
     userInput.resize(fieldLabels.size(), "");  // Initialize input fields
 }
@@ -84,12 +90,12 @@ void BookingForm::openConfirmationWindow() {
     if (approved) {
         formManager->closeForm();
     }
-}
+} 
 
 
 
-/*========== my code =================================================
-======================================================================*/
+///*========== my code =================================================
+//======================================================================*/
 //BookingForm::BookingForm(sf::RenderWindow& win, DialogueManager* manager)
 //    :window(win), formManager(manager)
 //{

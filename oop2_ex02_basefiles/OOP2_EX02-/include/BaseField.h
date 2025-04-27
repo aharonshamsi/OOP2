@@ -8,10 +8,10 @@ class BaseField : public AbstractField {
 public:
 	BaseField(const std::string& fiels);
 
-	virtual void validator() = 0; // פונקציה ווירטואלית לבדיקת תקינות
+	virtual void validat() = 0; // פונקציה ווירטואלית לבדיקת תקינות
 	void printValidationError() override {};
 
-	void input() override;
+	virtual void addChar(char ch) = 0;
 	void print() override;
 
 
@@ -31,12 +31,6 @@ inline BaseField<T>::BaseField(const std::string& label)
 	m_isInputValid(false)
 {}
 
-
-template<class T>
-inline void BaseField<T>::input()
-{
-	std::cin >> m_userInput;
-}
 
 template<class T>
 inline void BaseField<T>::print()

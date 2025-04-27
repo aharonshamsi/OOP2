@@ -5,7 +5,8 @@
 Id::Id(const std::string& label)
 	:IntField(label) {}
 
-void Id::validator()
+
+void Id::validat()
 {
 
     std::string idStr = std::to_string(m_userInput); // ממיר למחרוזת

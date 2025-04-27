@@ -7,11 +7,11 @@ Address::Address(const std::string& label)
 }
 
 
-void Address::validator()
+void Address::validat()
 {
-	m_street.validator(); // בידקה שם רחוב
+	m_street.validat(); // בידקה שם רחוב
 	validNumStreet(); // בדיקה מספר
-	m_city.validator(); // בידקה שם עיר
+	m_city.validat(); // בידקה שם עיר
 }
 
 

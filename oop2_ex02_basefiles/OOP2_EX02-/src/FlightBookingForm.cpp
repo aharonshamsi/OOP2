@@ -124,6 +124,11 @@ void FlightBookingForm::handleInput(sf::Event event) {
         } 
         else if (event.text.unicode >= 32 && event.text.unicode < 128) {
             userInput[activeField] += static_cast<char>(event.text.unicode);  // ✅ Append typed character
+
+            // הספתי=======================================================
+            m_fields[0]->addChar(static_cast<char>(event.text.unicode)); // פה נשלח תו בהתאם לשדה שבו אנו נמצאים
+           
+            
         }
     } 
     else if (event.type == sf::Event::KeyPressed) {
