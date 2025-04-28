@@ -8,6 +8,15 @@ FlightBookingForm::FlightBookingForm(sf::RenderWindow& win, DialogueManager* man
     fieldLabels.insert(fieldLabels.end(), { "Departure Airport:", "Arrival Airport:",
                    "Departure Date:",
                    "Preferred Time:" });
+
+    //============
+    m_fields.push_back(std::make_unique<DepartureAirport>("Departure Airport:"));
+    m_fields.push_back(std::make_unique<ArrivalAirport>("Arrival Airport:"));
+    m_fields.push_back(std::make_unique<DepartureDate>("Departure Date:"));
+    m_fields.push_back(std::make_unique<PreferredTime>("Preferred Time:"));
+
+
+
     userInput.resize(fieldLabels.size(), "");  // Resize to include all fields
     setDefaultValues();
 }
@@ -126,7 +135,8 @@ void FlightBookingForm::handleInput(sf::Event event) {
             userInput[activeField] += static_cast<char>(event.text.unicode);  // ✅ Append typed character
 
             // הספתי=======================================================
-            m_fields[0]->addChar(static_cast<char>(event.text.unicode)); // פה נשלח תו בהתאם לשדה שבו אנו נמצאים
+            m_fields[activeField]->addChar(static_cast<char>(event.text.unicode)); // פה נשלח תו בהתאם לשדה שבו אנו נמצאים
+
            
             
         }
@@ -183,6 +193,10 @@ void FlightBookingForm::handleInput(sf::Event event) {
         // ✅ Handle "Done" Button Click
         if (mousePos.x >= 20 && mousePos.x <= 160 && mousePos.y >= 550 && mousePos.y <= 590) {
             std::cout << "Flight Booking Confirmed!\n";
+
+            //========= פה נבצע בידקות תקינות של קלט 
+            //m_fields[activeField]->validat();
+
             openConfirmationWindow();  // ✅ Open confirmation
             return;
         }

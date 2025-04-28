@@ -28,6 +28,17 @@ void Id::validat()
 
 }
 
+
+void Id::addChar(char ch)
+{
+    if (isdigit(ch)) {
+        int digit = ch - '0';
+        m_userInput = m_userInput * 10 + digit;
+    }
+    std::cout << m_userInput;
+}
+
+
 void Id::printValidationError()
 {
     if(!m_isInputValid)

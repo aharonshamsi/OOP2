@@ -4,6 +4,11 @@
 #include "BookingForm.h"
 #include <SFML/Graphics.hpp>
 
+#include "DepartureAirport.h"
+#include "ArrivalAirport.h"
+#include "DepartureDate.h"
+#include "PreferredTime.h"
+
 class FlightBookingForm : public BookingForm {
 private:    
     void setDefaultValues() override;
