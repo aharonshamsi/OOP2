@@ -194,7 +194,7 @@ void FlightBookingForm::handleInput(sf::Event event) {
             std::cout << "Flight Booking Confirmed!\n";
 
             //========= פה נבצע בידקות תקינות של קלט 
-            for (int i = 0; i < 8; i++) {
+            for (int i = 0; i < m_fields.size(); i++) {
                 m_fields[i]->validat();
                 m_fields[i]->printValidationError();
             }

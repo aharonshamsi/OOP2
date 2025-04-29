@@ -38,8 +38,6 @@ void Id::addChar(char ch)
 
     else
         m_isInputValid = false; 
-    // נשאר לטפל אם שמתי גם תו, וקיבלתי הודעת שגיאה לחצי איקס לתקן זה לא באמת מוחק את הקלט
-    std::cout << m_userInput;
 }
 
 
