@@ -7,8 +7,6 @@ Address::Address(const std::string& label)
 
 void Address::validat()
 {
-	m_isInputValid = true;
-
 	splitAddress(); // מבצע חלקה רחוב מספר עיר
 	m_street.validat(); // בידקה שם רחוב
 	validNumStreet(); // בדיקה מספר

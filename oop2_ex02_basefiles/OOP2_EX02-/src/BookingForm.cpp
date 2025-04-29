@@ -32,7 +32,7 @@ void BookingForm::openConfirmationWindow() {
                 confirmWindow.close();
                 
                 //============== הוספה אם יש קלט לא תקין ולחצתי על סגירת החלון, אז מאתחל את הממברים שלא תקינים
-                for (int i = 0; i < 8; i++) {
+                for (int i = 0; i < m_fields.size(); i++) {
                     if (!m_fields[i]->getInputValid())
                         m_fields[i]->reset();
                 }

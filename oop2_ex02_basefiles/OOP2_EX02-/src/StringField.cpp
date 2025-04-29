@@ -12,5 +12,6 @@ void StringField::addChar(char ch)
 void StringField::reset()
 {
 	m_userInput = "";
+	m_isInputValid = true;
 }
 
