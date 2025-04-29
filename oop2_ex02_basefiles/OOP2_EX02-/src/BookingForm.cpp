@@ -5,10 +5,11 @@
 
 BookingForm::BookingForm(sf::RenderWindow& win, DialogueManager* manager) :window(win), formManager(manager) {
 
-    m_fields.push_back(std::make_unique<Name>("Name: "));
-    m_fields.push_back(std::make_unique<Id>("Id: "));
-    m_fields.push_back(std::make_unique<Email>("Email: "));
-    m_fields.push_back(std::make_unique<Address>("Address: "));
+    m_fields.push_back(std::make_unique<Name>("Name:"));
+    m_fields.push_back(std::make_unique<Id>("Id:"));
+    m_fields.push_back(std::make_unique<Address>("Address:"));
+    m_fields.push_back(std::make_unique<Email>("Email:"));
+
 
     fieldLabels = { "Name:", "ID:", "Address:", "Email:" };  // ✅ Add common fields
     userInput.resize(fieldLabels.size(), "");  // Initialize input fields
@@ -27,8 +28,15 @@ void BookingForm::openConfirmationWindow() {
     while (confirmWindow.isOpen()) {
         sf::Event event;
         while (confirmWindow.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 confirmWindow.close();
+                
+                //============== הוספה אם יש קלט לא תקין ולחצתי על סגירת החלון, אז מאתחל את הממברים שלא תקינים
+                for (int i = 0; i < 8; i++) {
+                    if (!m_fields[i]->getInputValid())
+                        m_fields[i]->reset();
+                }
+            }
 
             sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
 
@@ -52,6 +60,7 @@ void BookingForm::openConfirmationWindow() {
         title.setPosition(130, 20);
         confirmWindow.draw(title);
 
+        // פה קורה שרשור השדות והקלט לתוך משתנה =================== פה נדרש לשרשר את הווקטור
         std::string bookingInfo;
         for (size_t i = 0; i < fieldLabels.size(); ++i) {
             bookingInfo += fieldLabels[i] + " " + userInput[i] + "\n";
@@ -92,15 +101,3 @@ void BookingForm::openConfirmationWindow() {
     }
 } 
 
-
-
-///*========== my code =================================================
-//======================================================================*/
-//BookingForm::BookingForm(sf::RenderWindow& win, DialogueManager* manager)
-//    :window(win), formManager(manager)
-//{
-//    m_fields.push_back(std::make_unique<Name>("Name: "));
-//    m_fields.push_back(std::make_unique<Id>("Id: "));
-//    m_fields.push_back(std::make_unique<Email>("Email: "));
-//    m_fields.push_back(std::make_unique<Address>("Address: "));
-//}

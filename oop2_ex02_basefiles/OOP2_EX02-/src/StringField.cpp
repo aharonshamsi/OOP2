@@ -9,3 +9,8 @@ void StringField::addChar(char ch)
 	std::cout << m_userInput;
 }
 
+void StringField::reset()
+{
+	m_userInput = "";
+}
+

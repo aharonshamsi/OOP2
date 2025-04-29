@@ -3,7 +3,10 @@
 
 
 Id::Id(const std::string& label)
-	:IntField(label) {}
+	:IntField(label) 
+{
+    m_isInputValid = true;
+}
 
 
 void Id::validat()
@@ -11,20 +14,17 @@ void Id::validat()
 
     std::string idStr = std::to_string(m_userInput); // ממיר למחרוזת
 
-    if (!isLengthValid(idStr))
+    if (!isLengthValid(idStr) || !isAllDigits(idStr) || !m_isInputValid) {
         m_isInputValid = false;
-
-    if (!isAllDigits(idStr)) 
-        m_isInputValid = false;
+        return;
+    }
 
     int total = sumIsraeliID(idStr);
 
     if (total % 10 == 0)
         m_isInputValid = true;
-    else {
-        std::cout << "The Israeli ID card is not valid\n";
+    else
         m_isInputValid = false;
-    }
 
 }
 
@@ -35,6 +35,10 @@ void Id::addChar(char ch)
         int digit = ch - '0';
         m_userInput = m_userInput * 10 + digit;
     }
+
+    else
+        m_isInputValid = false; 
+    // נשאר לטפל אם שמתי גם תו, וקיבלתי הודעת שגיאה לחצי איקס לתקן זה לא באמת מוחק את הקלט
     std::cout << m_userInput;
 }
 
@@ -42,14 +46,13 @@ void Id::addChar(char ch)
 void Id::printValidationError()
 {
     if(!m_isInputValid)
-        std::cout << "Error: The name is invalid. Only numbers are allowed." << std::endl;
+        std::cout << "Error: The ID is invalid. Only numeric digits are allowed." << std::endl;
 }
 
 
 bool Id::isLengthValid(const std::string& id) const
 {
     if (id.empty() || id.size() > 9) {
-        std::cout << "ID must be up to 9 digits\n";
         return false;
     }
     return true;
@@ -59,7 +62,6 @@ bool Id::isLengthValid(const std::string& id) const
 bool Id::isAllDigits(const std::string& id) const
 {
     if (!std::all_of(id.begin(), id.end(), ::isdigit)) {
-        std::cout << "ID must contain digits only\n";
         return false;
     }
     return true;
