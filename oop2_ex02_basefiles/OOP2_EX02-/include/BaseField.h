@@ -8,13 +8,11 @@ class BaseField : public AbstractField {
 public:
 	BaseField(const std::string& fiels);
 
+	virtual void addChar(char ch) = 0;
 	virtual void validat() = 0; // פונקציה ווירטואלית לבדיקת תקינות
+	void print() override;
 	void printValidationError() override {};
 	void reset() override {};
-
-	virtual void addChar(char ch) = 0;
-	void print() override;
-
 
 	void setUserInput(const T& input);
 	T getUserInput();

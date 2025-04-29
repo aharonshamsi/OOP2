@@ -39,7 +39,6 @@ void Address::splitAddress()
 
 void Address::validNumStreet()
 {
-
 	std::string numStreet = m_numStreet.getUserInput();
 
 	m_isInputValid = !numStreet.empty(); // כלומר אם לא ריק מקבל אמת
