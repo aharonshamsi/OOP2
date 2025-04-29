@@ -4,7 +4,7 @@ class AbstractField {
 
 public:
 
-	AbstractField(const std::string& label) : m_label(label), m_isInputValid(false) {}
+	AbstractField(const std::string& label) : m_label(label), m_isInputValid(true) {}
 
 	virtual void addChar(char ch) = 0;
 	virtual void validat() = 0; // פונקציה ווירטואלית לבדיקת תקינות
@@ -13,6 +13,7 @@ public:
 	virtual void reset() = 0;
 
 	bool getInputValid() { return m_isInputValid; };
+	void setIsInputValid(const bool other) { m_isInputValid = other; };
 	
 
 protected:

@@ -45,7 +45,7 @@ template<class T>
 inline void BaseField<T>::setUserInput(const T& input)
 {
 	m_userInput = input;
-	std::cout << input << "   ";
+	std::cout << m_userInput << std::endl;
 }
 
 template<class T>

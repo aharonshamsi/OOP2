@@ -58,7 +58,7 @@ void BookingForm::openConfirmationWindow() {
         title.setFillColor(sf::Color::Black);
         title.setStyle(sf::Text::Bold);
         title.setPosition(130, 20);
-        confirmWindow.draw(title);
+        confirmWindow.draw(title); 
 
         // פה קורה שרשור השדות והקלט לתוך משתנה =================== פה נדרש לשרשר את הווקטור
         std::string bookingInfo;

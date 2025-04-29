@@ -1,8 +1,8 @@
 #pragma once
-#include "NamesField.h"
+#include "StringField.h"
 #include "Name.h"
 
-class Address : public NamesField {
+class Address : public StringField {
 
 public:
 	Address(const std::string& label);

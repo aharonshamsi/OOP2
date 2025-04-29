@@ -186,7 +186,6 @@ void FlightBookingForm::handleInput(sf::Event event) {
             }
             timeButtonX += 110;  // Move to next button
             
-            
         }
     
 
