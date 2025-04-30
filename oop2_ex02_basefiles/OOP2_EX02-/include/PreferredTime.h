@@ -1,5 +1,6 @@
-#pragma once
+﻿#pragma once
 #include "StringField.h"
+#include "vector"
 
 class PreferredTime : public StringField {
 
@@ -11,4 +12,6 @@ public:
 	void printValidationError() override;
 
 private:
+	std::vector<std::string> m_optionsPreferredTime; // שדות של בחירה אפשרויות
+
 };

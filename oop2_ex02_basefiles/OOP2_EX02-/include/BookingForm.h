@@ -12,7 +12,6 @@
 #include "Id.h"
 #include "Email.h"
 #include "Address.h"
-//=============================
 
 
 class DialogueManager;
@@ -32,7 +31,7 @@ class BookingForm {
     /*========== my code ====================================
     =========================================================*/
 protected:
-    std::vector < std::unique_ptr<AbstractField>> m_fields;
+    std::vector <std::unique_ptr<AbstractField>> m_fields;
 
 
 

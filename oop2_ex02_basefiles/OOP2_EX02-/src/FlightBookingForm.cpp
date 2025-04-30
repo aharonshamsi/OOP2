@@ -16,7 +16,6 @@ FlightBookingForm::FlightBookingForm(sf::RenderWindow& win, DialogueManager* man
     m_fields.push_back(std::make_unique<PreferredTime>("Preferred Time:"));
 
 
-
     userInput.resize(fieldLabels.size(), "");  // Resize to include all fields
     setDefaultValues();
 }
@@ -193,7 +192,7 @@ void FlightBookingForm::handleInput(sf::Event event) {
         if (mousePos.x >= 20 && mousePos.x <= 160 && mousePos.y >= 550 && mousePos.y <= 590) {
             std::cout << "Flight Booking Confirmed!\n";
 
-            //========= פה נבצע בידקות תקינות של קלט 
+            //========= פה נבצע בידקות תקינות של קלט  ===========
             for (int i = 0; i < m_fields.size(); i++) {
                 m_fields[i]->validat();
                 m_fields[i]->printValidationError();

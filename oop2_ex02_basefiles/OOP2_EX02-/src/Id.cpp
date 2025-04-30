@@ -5,7 +5,7 @@
 Id::Id(const std::string& label)
 	:IntField(label) 
 {
-    m_isInputValid = true;
+    m_userInput = 0;
 }
 
 
@@ -14,7 +14,7 @@ void Id::validat()
 
     std::string idStr = std::to_string(m_userInput); // ממיר למחרוזת
 
-    if (!isLengthValid(idStr) || !isAllDigits(idStr) || !m_isInputValid) {
+    if (!isLengthValid(idStr) || !isAllDigits(idStr) || m_userInput == 0 || !m_isInputValid) {
         m_isInputValid = false;
         return;
     }

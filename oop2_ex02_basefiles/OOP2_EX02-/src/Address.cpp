@@ -47,5 +47,6 @@ void Address::validNumStreet()
 			break;
 		}
 	}
+	m_numStreet.setIsInputValid(true);
 
 }

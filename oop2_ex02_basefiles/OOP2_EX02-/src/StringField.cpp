@@ -6,7 +6,7 @@ StringField::StringField(const std::string& label)
 void StringField::addChar(char ch)
 {
 	m_userInput += ch;
-	//std::cout << m_userInput;
+	std::cout << m_userInput;
 }
 
 void StringField::reset()
@@ -14,4 +14,5 @@ void StringField::reset()
 	m_userInput = "";
 	m_isInputValid = true;
 }
+
 

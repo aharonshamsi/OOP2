@@ -2,9 +2,7 @@
 
 IntField::IntField(const std::string& label)
 	:BaseField(label) 
-{
-	m_userInput = 0;
-}
+{}
 
 void IntField::reset()
 {

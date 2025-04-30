@@ -1,4 +1,7 @@
 #pragma once
+#include <ctime>
+#include <sstream>
+#include <iomanip>
 #include "StringField.h"
 
 class Date : public StringField {
@@ -8,8 +11,10 @@ public:
 
 	void validat() override;
 	void printValidationError() override;
+	
+	
 
-private:
+protected:
 	std::string m_year;
 	std::string m_month;
 	std::string m_day;
@@ -18,4 +23,6 @@ private:
 	size_t m_secondDash;
 
 	void splitDate();
+	bool isOnlyDigit();
+	void defaultDate();
 };

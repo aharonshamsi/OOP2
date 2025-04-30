@@ -1,8 +1,8 @@
 #pragma once
-#include "NamesField.h"
+#include "Date.h"
 
-class DepartureDate : public NamesField {
+class DepartureDate : public Date {
 
 public:
-	DepartureDate(const std::string& label) : NamesField(label) {};
+	DepartureDate(const std::string& label) : Date(label) {};
 };
