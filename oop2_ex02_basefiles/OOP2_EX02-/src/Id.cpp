@@ -28,23 +28,24 @@ void Id::validat()
 
 }
 
+//
+//void Id::addChar(char ch)
+//{
+//    if (isdigit(ch)) {
+//        int digit = ch - '0';
+//        m_userInput = m_userInput * 10 + digit;
+//    }
+//
+//    else
+//        m_isInputValid = false; 
+//}
 
-void Id::addChar(char ch)
-{
-    if (isdigit(ch)) {
-        int digit = ch - '0';
-        m_userInput = m_userInput * 10 + digit;
-    }
 
-    else
-        m_isInputValid = false; 
-}
-
-
-void Id::printValidationError()
+std::string Id::getMessageError()
 {
     if(!m_isInputValid)
-        std::cout << "Error: The ID is invalid. Only numeric digits are allowed." << std::endl;
+        return "Wrong control digit.\n";
+    return "";
 }
 
 

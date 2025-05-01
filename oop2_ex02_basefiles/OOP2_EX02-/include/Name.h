@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "NamesField.h"
 
 class Name : public NamesField {
@@ -6,9 +6,11 @@ class Name : public NamesField {
 public:
 	Name(const std::string& label) : NamesField(label) {};
 
-	void printValidationError() override {
+	// כנראה למחוק כי הדפסה זהה תמיד לכל היורשים מהאבא חוץ מתאיך וכד
+	std::string getMessageError() override {
 		if(!m_isInputValid)
-			std::cout << "Error: The name is invalid. Only alphabetic characters are allowed." << std::endl;
+			return "The input not adhere to the expected format.\n";
+		return "";
 	}
 
 private:

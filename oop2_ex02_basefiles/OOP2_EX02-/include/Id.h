@@ -9,8 +9,7 @@ public:
 	Id(const std::string& label);
 
 	void validat() override;
-	void addChar(char ch) override;
-	void printValidationError() override;
+	std::string getMessageError() override;
 
 
 private:

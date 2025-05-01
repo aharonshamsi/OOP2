@@ -10,7 +10,8 @@ public:
 	Date(const std::string& labal);
 
 	void validat() override;
-	void printValidationError() override;
+	std::string getMessageError() override;
+	void reset() override;
 	
 	
 

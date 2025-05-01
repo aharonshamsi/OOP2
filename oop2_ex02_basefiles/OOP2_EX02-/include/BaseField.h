@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include <iostream>
 #include "AbstractField.h"
+#include <sstream>
+
 
 template <class T>
 class BaseField : public AbstractField {
@@ -10,13 +12,14 @@ public:
 
 	virtual void addChar(char ch) = 0;
 	virtual void validat() = 0; // פונקציה ווירטואלית לבדיקת תקינות
-	void print() override;
-	void printValidationError() override {};
+	std::string print() override;
+	virtual std::string getMessageError() const { return ""; }
+
 	void reset() override {};
 
-	void setUserInput(const T& input);
-	T getUserInput();
+	void setUserInput(const std::string& input) override {};
 
+	virtual bool isEmpty() const = 0;
 
 
 protected:
@@ -34,22 +37,14 @@ inline BaseField<T>::BaseField(const std::string& label)
 
 
 template<class T>
-inline void BaseField<T>::print()
+inline std::string BaseField<T>::print()
 {
-	std::cout << m_userInput;
+	std::stringstream ss;
+	ss << m_label << " " << m_userInput;
+	return ss.str();
 }
 
-template<class T>
-inline void BaseField<T>::setUserInput(const T& input)
-{
-	m_userInput = input;
-}
 
-template<class T>
-inline T BaseField<T>::getUserInput()
-{
-	return m_userInput;
-}
 
 
 

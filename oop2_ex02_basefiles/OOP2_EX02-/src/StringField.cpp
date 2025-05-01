@@ -15,4 +15,16 @@ void StringField::reset()
 	m_isInputValid = true;
 }
 
+std::string StringField::getMessageError()
+{
+	if (!m_isInputValid)
+		return "The input not adhere to the expected format.\n";
+	return "";
+}
+
+bool StringField::isEmpty() const
+{
+	return m_userInput.empty();
+}
+
 

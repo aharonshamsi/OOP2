@@ -67,25 +67,25 @@ void UIManager::handleEvent(const sf::Event& event) {
             formManager.setActiveForm(std::make_unique<FlightBookingForm>(window, &formManager));
         }
 
-        if (buttonHotel.getGlobalBounds().contains(mousePos)) {
-            std::cout << "Hotel Booking Button Clicked!" << std::endl;
-            formManager.setActiveForm(std::make_unique<HotelBookingForm>(window, &formManager));
-        }
+        //if (buttonHotel.getGlobalBounds().contains(mousePos)) {
+        //    std::cout << "Hotel Booking Button Clicked!" << std::endl;
+        //    formManager.setActiveForm(std::make_unique<HotelBookingForm>(window, &formManager));
+        //}
 
-        if (buttonCar.getGlobalBounds().contains(mousePos)) {
-            std::cout << "Car Rental Button Clicked!" << std::endl;
-            formManager.setActiveForm(std::make_unique<CarRentalForm>(window, &formManager));
-        }
+        //if (buttonCar.getGlobalBounds().contains(mousePos)) {
+        //    std::cout << "Car Rental Button Clicked!" << std::endl;
+        //    formManager.setActiveForm(std::make_unique<CarRentalForm>(window, &formManager));
+        //}
 
-        if (buttonEvent.getGlobalBounds().contains(mousePos)) {
-            std::cout << "Event Booking Button Clicked!" << std::endl;
-            formManager.setActiveForm(std::make_unique<EventBookingForm>(window, &formManager));
-        }
+        //if (buttonEvent.getGlobalBounds().contains(mousePos)) {
+        //    std::cout << "Event Booking Button Clicked!" << std::endl;
+        //    formManager.setActiveForm(std::make_unique<EventBookingForm>(window, &formManager));
+        //}
 
-        if (buttonTrain.getGlobalBounds().contains(mousePos)) {
-            std::cout << "Train Booking Button Clicked!" << std::endl;
-            formManager.setActiveForm(std::make_unique<TrainBookingForm>(window, &formManager));
-        }
+        //if (buttonTrain.getGlobalBounds().contains(mousePos)) {
+        //    std::cout << "Train Booking Button Clicked!" << std::endl;
+        //    formManager.setActiveForm(std::make_unique<TrainBookingForm>(window, &formManager));
+        //}
         
     }
 }

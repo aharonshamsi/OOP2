@@ -15,9 +15,3 @@ void DepartureAirport::validat()
 		m_isInputValid = false;
 }
 
-
-void DepartureAirport::printValidationError()
-{
-	if (!m_isInputValid)
-		std::cout << "Error: The airport name is invalid. Only alphabetic characters are allowed." << std::endl;
-}

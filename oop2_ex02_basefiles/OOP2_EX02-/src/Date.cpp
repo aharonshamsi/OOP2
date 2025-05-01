@@ -4,7 +4,7 @@
 Date::Date(const std::string& label)
 	: StringField(label)
 {
-	defaultDate();
+	//defaultDate(); // מאתחל לתאריך נוכחי דיפולט
 }
 
 
@@ -19,19 +19,27 @@ void Date::validat()
 	splitDate();
 
 	if (m_firstDash != 4 || (m_secondDash != 7 && m_secondDash != 6) ||
-		m_year.size() != 4 || (m_month.size() != 2 && m_month.size() != 1) 
-		|| (m_day.size() != 2 && m_day.size() != 1))
-			m_isInputValid = false;
+		m_year.size() != 4 || (m_month.size() != 2 && m_month.size() != 1)
+		|| (m_day.size() != 2 && m_day.size() != 1)) {
+		m_isInputValid = false;
+	}
 
 }
 
-
-void Date::printValidationError()
+std::string Date::getMessageError()
 {
 	if (!m_isInputValid) {
-		std::cout << "Error: Invalid date format. Please enter a valid date in YYYY-MM-DD format." << std::endl;
 		defaultDate();
+		return "Out of range, YYYY-MM-DD format.\n";
 	}
+	return "";
+}
+
+
+void Date::reset()
+{
+	Date::defaultDate();
+	m_isInputValid = true;
 }
 
 

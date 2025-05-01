@@ -34,12 +34,6 @@ void Email::validat() {
 }
 
 
-void Email::printValidationError()
-{
-    if(!m_isInputValid)
-	    std::cout << "Error: The email address is invalid. Please enter a valid email format." << std::endl;
-}
-
 
 bool Email::isValidCharEmail(const std::string& str)
 {

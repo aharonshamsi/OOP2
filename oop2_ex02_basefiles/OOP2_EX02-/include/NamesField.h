@@ -9,5 +9,6 @@ public:
 	NamesField(const std::string& label);
 
 	void validat() override;
-	void printValidationError() override {};
+	virtual std::string getMessageError() const { return ""; }
+
 };

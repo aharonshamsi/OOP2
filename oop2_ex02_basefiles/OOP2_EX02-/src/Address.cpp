@@ -14,15 +14,6 @@ void Address::validat()
 }
 
 
-void Address::printValidationError()
-{
-	m_isInputValid = m_street.getInputValid() && m_numStreet.getInputValid() && m_city.getInputValid();
-
-	if (!m_isInputValid)
-		std::cout << "Error: Invalid address format. Please enter a valid street, number, and city." << std::endl;
-}
-
-
 void Address::splitAddress()
 {
 	size_t firstDash = m_userInput.find('-');
@@ -37,14 +28,14 @@ void Address::splitAddress()
 
 void Address::validNumStreet()
 {
-	std::string numStreet = m_numStreet.getUserInput();
+	std::string numStreet = m_numStreet.getUserInputAsString();
 
 	m_isInputValid = !numStreet.empty(); // כלומר אם לא ריק מקבל אמת
-
+	
 	for (char c : numStreet) {
 		if (!isdigit(c)) {
 			m_numStreet.setIsInputValid(false);
-			break;
+			return;
 		}
 	}
 	m_numStreet.setIsInputValid(true);

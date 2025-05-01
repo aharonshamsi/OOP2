@@ -11,7 +11,15 @@ public:
 	void reset() override;
 
 	void validat() override {};
-	void printValidationError() override {};
+
+	std::string getMessageError() override;
+	void setUserInput(const std::string& input) override { m_userInput = input; }
+
+	bool isEmpty() const override;
+	std::string getUserInputAsString() const override {
+		return m_userInput;
+	}
+
 
 private:
 

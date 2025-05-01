@@ -12,7 +12,7 @@
 
 class FlightBookingForm : public BookingForm {
 private:    
-    void setDefaultValues() override;
+    //void setDefaultValues() override;
     
     std::array<std::pair<std::string, bool>, 5> timeSelection = {
         std::make_pair("Morning", false),
@@ -21,6 +21,10 @@ private:
         std::make_pair("Night", false),
         std::make_pair("Don't Care", true)  // ✅ Default selection
     };
+
+    void ValidatBookingForm() override;
+    std::string formValidationError() override;
+    void resetForm() override;
 
 public:
     FlightBookingForm(sf::RenderWindow& win, DialogueManager* manager);  // ✅ Updated constructor
