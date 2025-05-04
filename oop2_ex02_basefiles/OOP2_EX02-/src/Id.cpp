@@ -11,7 +11,6 @@ Id::Id(const std::string& label)
 
 void Id::validat()
 {
-
     std::string idStr = std::to_string(m_userInput); // ממיר למחרוזת
 
     if (!isLengthValid(idStr) || !isAllDigits(idStr) || m_userInput == 0 || !m_isInputValid) {
@@ -25,20 +24,7 @@ void Id::validat()
         m_isInputValid = true;
     else
         m_isInputValid = false;
-
 }
-
-//
-//void Id::addChar(char ch)
-//{
-//    if (isdigit(ch)) {
-//        int digit = ch - '0';
-//        m_userInput = m_userInput * 10 + digit;
-//    }
-//
-//    else
-//        m_isInputValid = false; 
-//}
 
 
 std::string Id::getMessageError()

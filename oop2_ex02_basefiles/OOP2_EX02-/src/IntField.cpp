@@ -19,12 +19,18 @@ void IntField::addChar(char ch)
 
 void IntField::reset()
 {
-	m_userInput = 0;
 	m_isInputValid = true;
 }
 
+
+void IntField::deleteLastChar()
+{
+    m_userInput = m_userInput / 10;
+}
+
+
 bool IntField::isEmpty() const
 {
-    return m_userInput == 0;  // אצלי אפס זה תנאי שריק
+    return m_userInput == 0;
 }
 

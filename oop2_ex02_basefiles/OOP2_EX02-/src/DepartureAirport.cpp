@@ -2,9 +2,7 @@
 
 DepartureAirport::DepartureAirport(const std::string& label)
 	:StringField(label), m_departueAirport(label)
-{
-}
-
+{}
 
 void DepartureAirport::validat()
 {
@@ -13,5 +11,11 @@ void DepartureAirport::validat()
 
 	if (!m_departueAirport.getInputValid()) 
 		m_isInputValid = false;
+}
+
+void DepartureAirport::reset()
+{
+	StringField::reset();
+	m_departueAirport.reset();
 }
 

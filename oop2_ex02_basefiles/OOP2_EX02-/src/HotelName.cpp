@@ -9,13 +9,9 @@ void HotelName::validat()
 {
 	m_name.setUserInput(m_userInput);
 	m_name.validat();
+
+	if (!m_name.getInputValid())
+		m_isInputValid = false;
 }
 
-std::string HotelName::getMessageError()
-{
-	m_isInputValid = m_name.getInputValid();
 
-	if (!m_isInputValid)
-		return "Error: The hotel name is invalid. Only alphabetic characters are allowed.\n";
-	return "";
-}

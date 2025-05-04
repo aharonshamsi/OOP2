@@ -8,6 +8,7 @@ public:
 	Address(const std::string& label);
 
 	void validat() override;
+	void reset() override;
 
 private:
 	Name m_street;
@@ -16,5 +17,4 @@ private:
 
 	void splitAddress();
 	void validNumStreet();
-
 };

@@ -11,49 +11,55 @@
 #include "Id.h"
 #include "Email.h"
 #include "Address.h"
-
 #include "Title.h"
+#include "FormButton.h"
 
 class DialogueManager;
 
-
 class BookingForm {
-
-protected:
-    std::vector <std::unique_ptr<AbstractField>> m_fields;
-
-    void InitializingFields();
-
-    //=========  מפה זה טיפול בכפתורים ובכותרות 
-    Title m_titleLabel;
-    sf::Font m_font;
-    //========= 
-
-    std::size_t activeField = 0; // מספר שדה פעיל
-    sf::Clock cursorTimer;
-    bool showCursor = true; // הצג סמן
-
-    sf::RenderWindow& window; // חלון הזנת נתונים
-    DialogueManager* formManager; // מצביע מטיפוס מנהל טופס
-
-   // virtual void setDefaultValues()=0 ; // פונקציה ו
-    void openConfirmationWindow();
-
-
-    //================================================
-    //============ פה זה טיפוסים לבדיקת תקינות טופס
-    bool m_isFormValidat;
-    virtual void ValidatBookingForm() = 0;
-    virtual std::string formValidationError() = 0;
-    virtual void resetForm() = 0;
-
 
 public:
     BookingForm(sf::RenderWindow& win, DialogueManager* manager, const std::string& text, unsigned int fontSize);
+
     virtual ~BookingForm() = default;
     virtual std::string getFormType() const = 0;
     virtual void render(sf::RenderWindow& window) = 0;
     virtual void handleInput(sf::Event event) = 0;
+
+
+protected:
+    std::vector <std::unique_ptr<AbstractField>> m_fields;
+    std::vector<std::pair<std::string, bool>> m_selectionOptions;
+
+
+    //Buttons
+    Title m_titleLabel;                 // ✅ title Button
+    sf::Font m_font;                    // ✅ All font
+    FormButton m_doneButton;            // ✅ Done Button
+    FormButton m_cancelButton;          // ✅ Cancel Button
+    FormButton m_approveButton;         // ✅ Approve Button
+    FormButton m_cancelButtonOutput;    // ✅ Cancel Output Button
+
+    std::size_t activeField = 0; 
+    sf::Clock cursorTimer;
+    sf::RenderWindow& window; 
+    DialogueManager* formManager; 
+
+    bool showCursor = true;
+    bool m_isFormValidat;
+
+    void openConfirmationWindow();
+    void drawButtons(sf::RenderWindow& window);
+    void InitializingFields();
+    virtual void ValidatBookingForm() = 0;
+    virtual std::string formValidationError() = 0;
+    virtual void resetForm() = 0;
+    virtual void setDefaultOptions() = 0; 
+    
+private:
+    void handleButtonClick(sf::RenderWindow& confirmWindow, bool& approved);
+    void messageFormError(sf::RenderWindow& confirmWindow, const float& y);
+
 };
 
 #endif // BOOKINGFORM_H

@@ -4,13 +4,23 @@ Address::Address(const std::string& label)
 	:StringField(label), m_street(label), m_numStreet(label), m_city(label)
 {}
 
-
 void Address::validat()
 {
-	splitAddress(); // מבצע חלקה רחוב מספר עיר
-	m_street.validat(); // בידקה שם רחוב
-	validNumStreet(); // בדיקה מספר
-	m_city.validat(); // בידקה שם עיר
+	splitAddress(); // Street division, city number
+	m_street.validat(); 
+	validNumStreet(); 
+	m_city.validat(); 
+
+	if (!m_street.getInputValid() || !m_numStreet.getInputValid() || !m_city.getInputValid())
+		m_isInputValid = false;
+}
+
+void Address::reset()
+{
+	StringField::reset();
+	m_street.reset();
+	m_numStreet.reset();
+	m_city.reset();
 }
 
 
@@ -30,7 +40,7 @@ void Address::validNumStreet()
 {
 	std::string numStreet = m_numStreet.getUserInputAsString();
 
-	m_isInputValid = !numStreet.empty(); // כלומר אם לא ריק מקבל אמת
+	m_isInputValid = !numStreet.empty(); 
 	
 	for (char c : numStreet) {
 		if (!isdigit(c)) {
@@ -38,6 +48,4 @@ void Address::validNumStreet()
 			return;
 		}
 	}
-	m_numStreet.setIsInputValid(true);
-
 }

@@ -11,16 +11,14 @@ public:
 	BaseField(const std::string& fiels);
 
 	virtual void addChar(char ch) = 0;
-	virtual void validat() = 0; // פונקציה ווירטואלית לבדיקת תקינות
+	virtual void deleteLastChar() = 0;
+	virtual bool isEmpty() const = 0;
 	std::string print() override;
-	virtual std::string getMessageError() const { return ""; }
-
+	void validat() override {};
 	void reset() override {};
 
+	virtual std::string getMessageError() const { return ""; }
 	void setUserInput(const std::string& input) override {};
-
-	virtual bool isEmpty() const = 0;
-
 
 protected:
 	T m_userInput;
@@ -43,8 +41,3 @@ inline std::string BaseField<T>::print()
 	ss << m_label << " " << m_userInput;
 	return ss.str();
 }
-
-
-
-
-

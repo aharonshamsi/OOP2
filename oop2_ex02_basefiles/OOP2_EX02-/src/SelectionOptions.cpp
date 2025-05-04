@@ -19,7 +19,7 @@ void SelectionOptions::validat()
 
 std::string SelectionOptions::getMessageError()
 {
-	if (!m_isInputValid) // פה לשים הדעה מתאימה
+	if (!m_isInputValid)
 		return "Choose one of the listed options only.\n";
 	return "";
 }

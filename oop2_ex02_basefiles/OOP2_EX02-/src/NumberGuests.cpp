@@ -1,15 +1,14 @@
 ﻿#include "NumberGuests.h"
-#include "NumberGuests.h"
-#include "NumberGuests.h"
-#include "NumberGuests.h"
 
 NumberGuests::NumberGuests(const std::string& label)
 	:IntField(label)
-{}
+{
+	m_userInput = 0;
+}
 
 void NumberGuests::validat()
 {
-	IntField::validat(); // קריאה לבדיקה של האב
+	IntField::validat(); 
 
 	if (m_isInputValid) {
 		if (m_userInput < 1 || m_userInput > 15)
@@ -20,7 +19,7 @@ void NumberGuests::validat()
 std::string NumberGuests::getMessageError()
 {
 	if (!m_isInputValid)
-		return "Error: The number of guests is invalid. It must be a numeric value between 1 and 15.\n";
+		return "The number of guests between 1 and 15.\n";
 	return "";
 }
 

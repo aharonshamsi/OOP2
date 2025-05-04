@@ -5,7 +5,7 @@ Title::Title(const std::string& text, const sf::Font& font, unsigned int fontSiz
     m_text.setString(text);
     m_text.setFont(font);
     m_text.setCharacterSize(fontSize);
-    m_text.setFillColor(sf::Color(20, 20, 20)); // אפור כהה
+    m_text.setFillColor(sf::Color(20, 20, 20)); 
     m_text.setStyle(sf::Text::Bold);
 }
 

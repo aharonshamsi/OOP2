@@ -12,6 +12,6 @@ public:
 	std::string getMessageError() override;
 
 protected:
-	std::vector<std::string> m_selectionOptions; // שדות של בחירה אפשרויות
+	std::vector<std::string> m_selectionOptions; 
 
 };

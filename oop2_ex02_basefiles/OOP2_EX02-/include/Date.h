@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <ctime>
 #include <sstream>
 #include <iomanip>
@@ -8,12 +8,16 @@ class Date : public StringField {
 
 public:
 	Date(const std::string& labal);
+	Date() : StringField("") {}  // default
+
 
 	void validat() override;
 	std::string getMessageError() override;
 	void reset() override;
 	
-	
+	void splitDate(const std::string& date);
+	bool operator<(const Date& other) const;
+
 
 protected:
 	std::string m_year;
@@ -23,7 +27,6 @@ protected:
 	size_t m_firstDash;
 	size_t m_secondDash;
 
-	void splitDate();
 	bool isOnlyDigit();
 	void defaultDate();
 };

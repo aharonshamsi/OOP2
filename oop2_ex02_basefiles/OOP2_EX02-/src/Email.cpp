@@ -11,13 +11,13 @@ void Email::validat() {
     size_t atPos = m_userInput.find('@');
     size_t dotPos = m_userInput.rfind('.');
 
-    // אם לא קיימם המשתנים דלעייל מקבלים ערך שלילי
-    if (atPos == std::string::npos || dotPos == std::string::npos || dotPos + 2 >= m_userInput.size()) {
+    if (atPos == std::string::npos || dotPos == std::string::npos || 
+        dotPos + 2 >= m_userInput.size()) {
         m_isInputValid = false;
         return;
     }
 
-    //מחלק את הקלט לשלושה חלקים 
+    //Divides the input into three parts
     std::string userName = m_userInput.substr(0, atPos);
     std::string domain = m_userInput.substr(atPos + 1, dotPos - atPos - 1);
     std::string end = m_userInput.substr(dotPos + 1);
@@ -34,11 +34,9 @@ void Email::validat() {
 }
 
 
-
 bool Email::isValidCharEmail(const std::string& str)
 {
     for (char c : str) {
-        // הפונקציה כשלעצמה מחריזה טרו אם זה מספר או אות
         if (!std::isalnum(c) && c != '.' && c != '@' && c != '_' && c != '-') {
             return false;
         }

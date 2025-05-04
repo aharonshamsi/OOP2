@@ -6,7 +6,6 @@ ArrivalAirport::ArrivalAirport(const std::string& label)
 {
 }
 
-
 void ArrivalAirport::validat()
 {
 	m_arrivalAirport.setUserInput(m_userInput);
@@ -14,6 +13,12 @@ void ArrivalAirport::validat()
 
 	if (!m_arrivalAirport.getInputValid())
 		m_isInputValid = false;
+}
+
+void ArrivalAirport::reset()
+{
+	StringField::reset();
+	m_arrivalAirport.reset();
 }
 
 

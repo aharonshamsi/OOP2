@@ -6,13 +6,17 @@ StringField::StringField(const std::string& label)
 void StringField::addChar(char ch)
 {
 	m_userInput += ch;
-	std::cout << m_userInput;
 }
 
 void StringField::reset()
 {
-	m_userInput = "";
 	m_isInputValid = true;
+}
+
+void StringField::deleteLastChar()
+{
+	if (!m_userInput.empty())
+		m_userInput.pop_back();
 }
 
 std::string StringField::getMessageError()

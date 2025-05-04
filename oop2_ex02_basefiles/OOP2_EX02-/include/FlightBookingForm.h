@@ -3,7 +3,6 @@
 
 #include "BookingForm.h"
 #include <SFML/Graphics.hpp>
-
 #include "DepartureAirport.h"
 #include "ArrivalAirport.h"
 #include "DepartureDate.h"
@@ -11,26 +10,21 @@
 
 
 class FlightBookingForm : public BookingForm {
-private:    
-    //void setDefaultValues() override;
-    
-    std::array<std::pair<std::string, bool>, 5> timeSelection = {
-        std::make_pair("Morning", false),
-        std::make_pair("Noon", false),
-        std::make_pair("Evening", false),
-        std::make_pair("Night", false),
-        std::make_pair("Don't Care", true)  // ✅ Default selection
-    };
+
+public:
+    FlightBookingForm(sf::RenderWindow& win, DialogueManager* manager); 
+
+    void render(sf::RenderWindow& window) override;
+    void handleInput(sf::Event event) override;
+    std::string getFormType() const override;
+
+
+private:
 
     void ValidatBookingForm() override;
     std::string formValidationError() override;
     void resetForm() override;
-
-public:
-    FlightBookingForm(sf::RenderWindow& win, DialogueManager* manager);  // ✅ Updated constructor
-    std::string getFormType() const override;
-    void render(sf::RenderWindow& window) override;
-    void handleInput(sf::Event event) override;
+    void setDefaultOptions() override;
 };
 
-#endif // FLIGHTBOOKINGFORM_H
+#endif 
