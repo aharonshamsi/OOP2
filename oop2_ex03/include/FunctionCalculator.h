@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include <sstream>
+#include <fstream>
 
 #include "MessageException.h"
 
@@ -28,6 +29,7 @@ private:
     void del();
     void help();
     void exit();
+    void readFromFile();
 
     template <typename FuncType>
     void binaryFunc()
@@ -43,6 +45,7 @@ private:
     {
     	m_operations.push_back(std::make_shared<FuncType>());
 	}
+
     template <typename FuncType>
     void unaryWithIntFunc()
     {
@@ -63,6 +66,9 @@ private:
         Add,
         Mul,
         Comp,
+
+        Read,
+
         Del,
         Help,
         Exit,
@@ -79,7 +85,7 @@ private:
     using OperationList = std::vector<std::shared_ptr<Operation>>;
 
     const ActionMap m_actions; // של עזרה ActionDetails וקטור של 
-    OperationList m_operations; // וקטור הדפסת הפעולות
+    OperationList m_operations; // וקטור הפעולות
     bool m_running = true; // משתנה שמייצג האם הפונקציה פעילה
     std::istream& m_istr;  // משדר קלט
     std::ostream& m_ostr;  // משדר פלט

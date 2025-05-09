@@ -28,20 +28,28 @@ void FunctionCalculator::run()
             m_ostr << "Enter command ('help' for the list of available commands): ";
             const auto action = readAction(); // מחזיר enum פקודה
 
-            // אם קבלתי 
-            if (action == Action::Invalid)
-                throw MessageException("Error: The user entered an invalid command. \n");
-
             runAction(action);
+            // לבדוק האם צריך לתמוך בhelp 11
+            // כלומר שבכל איטרציה של פקודה אין תוספת
+            // אם כן אז בדיקת הארגומטנים של מספר 3 תיהיה פה
+                    //// בדיקה שאין עודף ארגומנטים
+                    
+             //// צריך לטפל בפונקציה זו, ראה דוגמה במצגת
+            std::string line;
+            std::getline(m_istr, line);
+            auto iss = std::istringstream(line);
+            if (!(iss.eof() || (iss >> std::ws).eof()))
+                throw MessageException("Error: Too many arguments after operation index and size.\n");
         }
         catch (MessageException& exception) {
             m_istr.clear();
-            m_istr.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            //m_istr.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             m_ostr << exception.what();
         }
 
     } while (m_running);
+
 }
 
 
@@ -58,12 +66,6 @@ void FunctionCalculator::eval()
 
         else if (size > MAX_MAT_SIZE)
             throw MessageException("Error: Matrix size must not exceed 5. \n");
-
-
-        //// בדיקה שאין עודף ארגומנטים
-        //// צריך לטפל בפונקציה זו, ראה דוגמה במצגת
-        //if (!(m_istr >> std::ws).eof())
-        //    throw MessageException("Error: Too many arguments after operation index and size.\n");
 
 
         //============
@@ -118,6 +120,19 @@ void FunctionCalculator::exit()
     m_ostr << "Goodbye!\n";
     m_running = false;
 }
+
+
+void FunctionCalculator::readFromFile()
+{
+    std::string path;
+    m_istr >> path;
+
+    std::ifstream file(path);
+    if (!file.is_open())
+        throw MessageException("Error: Could not open file.\n");
+}
+
+
 
 
 void FunctionCalculator::printOperations() const
@@ -184,7 +199,8 @@ void FunctionCalculator::runAction(Action action)
             break;
 
         case Action::Invalid:
-            m_ostr << "Command not found\n";
+            //m_ostr << "Command not found\n";
+            throw MessageException("Error: The user entered an invalid command. \n"); // שגיאת פקודה
             break;
 
         case Action::Eval:         eval();                     break;
@@ -194,6 +210,9 @@ void FunctionCalculator::runAction(Action action)
         case Action::Del:          del();                      break;
         case Action::Help:         help();                     break;
         case Action::Exit:         exit();                     break;
+        
+        case Action::Read:         readFromFile();                     break;
+
         //case Action::Iden:          unaryFunc<Identity>();      break;
         //case Action::Tran:          unaryFunc<Transpose>();      break;
         case Action::Scal:          unaryWithIntFunc<Scalar>();      break;
@@ -234,6 +253,11 @@ FunctionCalculator::ActionMap FunctionCalculator::createActions() const
             "(osite) num1 num2 - creates an operation that is the composition of operation #num1 "
 			"and operation #num2",
             Action::Comp
+        },
+        {
+            "read",
+            " path - reads and executes commands from a file at the given path",
+            Action::Read
         },
         {
             "del",
