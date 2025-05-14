@@ -139,8 +139,8 @@ void FunctionCalculator::runAction(std::istream& istr, Action action)
     case Action::Sub:          binaryFunc<Sub>(istr);          break;
     case Action::Comp:         binaryFunc<Comp>(istr);         break;
     case Action::Del:          del(istr);                      break;
-    case Action::Help:         help();                         break;
-    case Action::Exit:         exit();                         break;
+    case Action::Help:         help(istr);                         break;
+    case Action::Exit:         exit(istr);                         break;
     case Action::Read:         readFromFile(istr);             break;
     case Action::Resize:       resizeSizeFunctions(istr);      break;
     //case Action::Iden:          unaryFunc<Identity>();      break;
@@ -221,6 +221,7 @@ void FunctionCalculator::readFromFile(std::istream& istr)
         throw MessageException("Error: Could not open file.\n");
 
     m_readFormFile = true;
+    m_numLine = 0;
     run(file); // Read form file
 }
 
@@ -234,8 +235,11 @@ void FunctionCalculator::del(std::istream& istr)
 }
 
 //============================================================================
-void FunctionCalculator::help()
+void FunctionCalculator::help(std::istream& istr)
 {
+    if (!checkArgumentSize(istr))
+        throw ManyArgumentsException("Error: Too many arguments after operation index and size.\n");
+
     m_ostr << "The available commands are:\n";
     for (const auto& action : m_actions)
     {
@@ -245,8 +249,11 @@ void FunctionCalculator::help()
 }
 
 //============================================================================
-void FunctionCalculator::exit()
+void FunctionCalculator::exit(std::istream& istr)
 {
+    if (!checkArgumentSize(istr))
+        throw ManyArgumentsException("Error: Too many arguments after operation index and size.\n");
+
     m_ostr << "Goodbye!\n";
     m_running = false;
 }

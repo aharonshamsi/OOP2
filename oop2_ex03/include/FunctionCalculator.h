@@ -100,8 +100,8 @@ private:
 
     void eval(std::istream& istr);
     void del(std::istream& istr);
-    void help();
-    void exit();
+    void help(std::istream& istr);
+    void exit(std::istream& istr);
     void readFromFile(std::istream& istr);
     void resizeSizeFunctions(std::istream& istr);
     void ChooseNumFunctions();
