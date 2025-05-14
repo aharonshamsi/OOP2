@@ -1,8 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include <vector>
 #include <iostream>
+#include "MessageException.h"
 
+inline constexpr int MAX_ALLOWED_VALUE = 1000;
+inline constexpr int MIN_ALLOWED_VALUE = -1024;
 
 template <typename T>
 class SquareMatrix
@@ -67,13 +70,22 @@ inline std::ostream& operator<<(std::ostream& ostr, const SquareMatrix<int>& mat
 	return ostr;
 }
 
-inline std::istream& operator>>(std::istream& istr, SquareMatrix<int>& matrix)
+inline std::istream& readMatrix(std::istream& istr, SquareMatrix<int>& matrix, int& numLine)
 {
 	for (int i = 0; i < matrix.size(); ++i)
 	{
+		numLine++; // כל פעם שהתחלנו שורה חדשה במטריצה
 		for (int j = 0; j < matrix.size(); ++j)
 		{
-			istr >> matrix(i, j);
+			if (!(istr >> matrix(i, j))) {
+				throw MessageException("Error: Invalid input. Please enter a valid number without extra characters.\n");
+			}
+
+			if (matrix(i, j) > MAX_ALLOWED_VALUE || matrix(i, j) < MIN_ALLOWED_VALUE) {
+				throw MessageException(
+					"Error: The entered number is not within the allowed range (" +
+					std::to_string(MIN_ALLOWED_VALUE) + " to " + std::to_string(MAX_ALLOWED_VALUE) + ").\n");
+			}
 		}
 	}
 	return istr;

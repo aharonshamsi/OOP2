@@ -5,8 +5,7 @@
 #include <vector>
 #include <iosfwd>
 
-inline constexpr int MAX_ALLOWED_VALUE = 1000;
-inline constexpr int MIN_ALLOWED_VALUE = -1024;
+
 
 // Represents an operation on sets
 class Operation
@@ -27,10 +26,7 @@ public:
 
     virtual void print(std::ostream& ostr, const std::vector<T>& input) const;
 
-
-
-    // ============= הוספתי
-    bool isInAllowedRange(const std::vector<T>& input); // פונקצית לבדיקת שערכי המטרציה בתוך התחום
+    bool isInAllowedRange(const std::vector<T>& input); // Checking that the metric values ​​are within the range
 
 
 };

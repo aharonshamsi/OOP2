@@ -13,7 +13,5 @@ public:
     int inputCount() const override;
     T compute(const std::vector<T>& input) const override;
     void printSymbol(std::ostream& ostr) const override;
-
-
    
 };

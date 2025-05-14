@@ -21,6 +21,6 @@ protected:
 
 
 private:
-    const std::shared_ptr<Operation> m_first; // סופר כמה הפניות ופעמים נעשה בו שימוש
+    const std::shared_ptr<Operation> m_first; 
     const std::shared_ptr<Operation> m_second;
 };

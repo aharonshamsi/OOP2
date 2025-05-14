@@ -14,8 +14,7 @@ void Operation::print(std::ostream& ostr, const std::vector<T>& input) const
 
 bool Operation::isInAllowedRange(const std::vector<T>& input)
 {
-    const const auto resultMatrix = compute(input); // מטריצת הסכום
-    int sumAddMatrix = 0;
+    const auto resultMatrix = compute(input);
 
     for (int i = 0; i < resultMatrix.size(); i++) {
         for (int j = 0; j < resultMatrix.size(); j++) {
