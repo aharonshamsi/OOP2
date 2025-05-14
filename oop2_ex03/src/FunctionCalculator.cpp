@@ -202,7 +202,6 @@ std::optional<int> FunctionCalculator::readOperationIndex(std::istream& istr) co
         if (i >= static_cast<int>(m_operations.size()) || i < 0) {
             throw MessageException("Error: Operation number " + std::to_string(i) +" doesn't exist.\n");
         }
-
         else
             throw MessageException("Error: Operation index must be a number.\n");
     }
