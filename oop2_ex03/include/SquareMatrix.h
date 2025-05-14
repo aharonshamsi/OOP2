@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include "MessageException.h"
+#include "ManyArgumentsException.h"
 
 inline constexpr int MAX_ALLOWED_VALUE = 1000;
 inline constexpr int MIN_ALLOWED_VALUE = -1024;
@@ -88,6 +89,13 @@ inline std::istream& readMatrix(std::istream& istr, SquareMatrix<int>& matrix, i
 			}
 		}
 	}
+
+	std::string restOfLine;
+	std::getline(istr, restOfLine);
+
+	if (!restOfLine.empty() && restOfLine.find_first_not_of(" \t\r") != std::string::npos)
+		throw ManyArgumentsException("Error: Too many arguments after operation index and size.\n");
+
 	return istr;
 }
 
