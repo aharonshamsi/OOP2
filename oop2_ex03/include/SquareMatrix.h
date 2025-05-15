@@ -76,6 +76,7 @@ inline std::istream& readMatrix(std::istream& istr, SquareMatrix<int>& matrix, i
 	for (int i = 0; i < matrix.size(); ++i)
 	{
 		numLine++; // כל פעם שהתחלנו שורה חדשה במטריצה
+
 		for (int j = 0; j < matrix.size(); ++j)
 		{
 			if (!(istr >> matrix(i, j))) {

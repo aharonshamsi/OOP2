@@ -96,7 +96,7 @@ private:
     int m_maxSizeFunction;
     int m_resizFunctions;
     int m_numLine;
-
+    std::string m_errorLine;
 
     void eval(std::istream& istr);
     void del(std::istream& istr);

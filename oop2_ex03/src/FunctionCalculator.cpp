@@ -37,7 +37,6 @@ void FunctionCalculator::run(std::istream& istr)
     while (m_running) {
 
         try {
-
             m_ostr << '\n';
             if (m_readFormFile)
                 m_numLine++;
@@ -269,7 +268,7 @@ FunctionCalculator::OperationList FunctionCalculator::createOperations() const
 //============================================================================
 void FunctionCalculator::ChooseNumFunctions()
 {
-    std::cout << "Please enter the maximum number of functions that can be stored in this program:\n";
+    std::cout << "Please enter the maximum number of functions that can be stored in this program: ";
 
     m_maxSizeFunction = 0;
     std::cin >> m_maxSizeFunction;
