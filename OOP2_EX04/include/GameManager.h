@@ -5,9 +5,10 @@
 #include <string> 
 #include <sstream>
 
-#include "GameConsts.h"
 #include "GameException.h"
-#include "DisplayError.h"
+#include "ErrorWindow.h"
+
+#include "GameConsts.h"
 #include "GameInfo.h"
 
 class GameManager {
@@ -21,6 +22,9 @@ private:
 	sf::RenderWindow m_gameWindow;
 	sf::Vector2f m_sizeWindow;
 	GameInfo m_gameInfo;
+
+	int m_neededArea; // יעד כבישה שצריך
+	int m_numEnemies; // מספר האויביים
 
 	void readLevel(std::string& nameLevel, std::string& infoLevel); // 
 	void initGameInfo(std::string& infoLevel);

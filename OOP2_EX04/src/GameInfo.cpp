@@ -4,8 +4,7 @@
 #include "GameInfo.h"
 
 GameInfo::GameInfo()
-:m_goalPercent(0),
-m_numEnemies(0),
+:m_capturedArea(0),
 m_playerLives(0),
 m_nunLevel(0),
 m_score(0),
@@ -14,7 +13,7 @@ m_sizeWindow(0, 0)
 {}
 
 // עדכון מיקום הטקסט והצורה בתחתית החלון
-void GameInfo::initStatusBar(sf::RenderWindow& window)
+void GameInfo::initStatusBar(sf::Vector2f sizeWindow)
 {
     m_font.loadFromFile("Athelas.ttc");
     m_text.setFont(m_font);
@@ -22,28 +21,33 @@ void GameInfo::initStatusBar(sf::RenderWindow& window)
     m_text.setFillColor(GameConsts::COLOR_TEXT_INFO);
 
     // קביעת הצורה של המלבן
-    m_shape.setSize(sf::Vector2f(m_sizeWindow.x, m_sizeWindow.y / 10));
-    m_shape.setPosition(0.f, m_sizeWindow.y - m_shape.getSize().y);
+    m_shape.setSize(sf::Vector2f(sizeWindow.x, sizeWindow.y / 10));
+    m_shape.setPosition(0.f, sizeWindow.y - m_shape.getSize().y);
     m_shape.setFillColor(sf::Color(GameConsts::COLOR_SHAPE_INFO));
 }
 
 // עדכון קריאת הטקסט בכל פריים 
 void GameInfo::updateStatusText()
 {
+    int minutes, seconds;
+    updateRemainingTime(minutes, seconds);
+
     std::string info = "Level: " + std::to_string(m_nunLevel) +
-        "    Goal: " + std::to_string(m_goalPercent) + "%" +
-        "    Enemies: " + std::to_string(m_numEnemies) +
+        "    Won: " + std::to_string(m_capturedArea) + "%" +
         "    Lives: " + std::to_string(m_playerLives) +
-        "    Score: " + std::to_string(m_score);
+        "    Score: " + std::to_string(m_score) +
+        "    Time: " + (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
+                        (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
     m_text.setString(info);
 
-    // חישוב מיקום טקסט חדש במרכז המלבן (אם האורך של הטקסט משתנה)
+// חישוב מיקום טקסט חדש במרכז המלבן (אם האורך של הטקסט משתנה) יש תזוזות בגודל הטקסט בגלל השעון, אז נבדוק בהמשך לעשות כניסה ראשונה
     sf::FloatRect textBounds = m_text.getLocalBounds();
     m_text.setPosition(
         (m_sizeWindow.x - textBounds.width) / 2.f,
         m_sizeWindow.y - m_shape.getSize().y + (m_shape.getSize().y - textBounds.height) / 2.f - textBounds.top
     );
+
 }
 
 
@@ -56,7 +60,16 @@ void GameInfo::drawInfo(sf::RenderWindow& window)
 
 void GameInfo::resetInfo()
 {
-    m_goalPercent = 0;
-    m_numEnemies = 0;
+    m_capturedArea = 0;
     m_playerLives = 0;
+    m_countDown = 0;
+}
+
+
+void GameInfo::updateRemainingTime(int& minutes, int& seconds)
+{
+    float elapsedTime = m_timer.restart().asSeconds();
+    m_countDown -= elapsedTime;
+    minutes = static_cast<int> (m_countDown) / 60;
+    seconds = static_cast<int> (m_countDown) % 60;
 }

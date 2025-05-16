@@ -1,7 +1,7 @@
 ﻿#include "GameManager.h"
-#include "DisplayError.h"
 
 GameManager::GameManager()
+	:m_neededArea(0), m_numEnemies(0)
 {}
 
 void GameManager::run() {
@@ -10,7 +10,7 @@ void GameManager::run() {
 	{
 		std::ifstream filePlaylist(GameConsts::NAME_FLAYLIST_LEVEL);
 		if (!filePlaylist.is_open())
-			throw GameException("Error: Failed to open playlist file!\n");
+			throw GameException("Error: \n   Failed to open playlist file!");
 
 
 		std::string nameLevel;
@@ -24,7 +24,7 @@ void GameManager::run() {
 
 
 			// לולאת המשחק=================
-			while (m_gameWindow.isOpen()) {
+			while (m_gameWindow.isOpen()) {  // נבדוק שלא סיים את יעד הכבישה m_neededArea וכן שלא נגמר זמן וחיים 
 				sf::Event event;
 
 				while (m_gameWindow.pollEvent(event)) {
@@ -62,37 +62,33 @@ void GameManager::readLevel(std::string& nameLevel, std::string& infoLevel)
 {
 	std::ifstream fileLevel(nameLevel);
 	if (!fileLevel.is_open())
-		throw GameException("Error: Failed to open level file: " + nameLevel);
+		throw GameException("Error: \n   Failed to open level file: " + nameLevel);
 	std::getline(fileLevel, infoLevel);
 }
 
 //====================================================================
 void GameManager::initGameInfo(std::string& infoLevel)
 {
-	int goalPercent; 
-	int numEnemies; 
 	int playerLives;
 	float timeLevel;
 
 	std::istringstream lineStream(infoLevel);
 
-	if (!(lineStream >> goalPercent >> numEnemies >>
+	if (!(lineStream >> m_neededArea >> m_numEnemies >>
 		m_sizeWindow.x >> m_sizeWindow.y >> playerLives >> timeLevel)) {
-		throw GameException("Error: Invalid data format in level file! \n");
+		throw GameException("Error: \n   Invalid data format in level file!");
 	}
 
-	m_gameInfo.setGoalPercent(goalPercent);
-	m_gameInfo.setNumEnemies(numEnemies);
 	m_gameInfo.setPlayerLives(playerLives);
 	m_gameInfo.setCountDown(timeLevel);
 	m_gameInfo.setScore(m_gameInfo.getScore());
 	m_gameInfo.setSizeWindow(m_sizeWindow);
 	m_gameInfo.setnumLevel(m_gameInfo.getNumLevel()+1); // נגדיל את מספר השלב
 
+	m_gameInfo.initStatusBar(m_sizeWindow);
+	//m_gameInfo.updateStatusText();
 
-	m_gameInfo.initStatusBar(m_gameWindow);
-
-	std:: cout <<"The level is: "<< m_gameInfo.getNumLevel() << std::endl; // הדפסת השלב
+	std:: cout <<"The level is: "<< m_sizeWindow.x << " " << m_sizeWindow.y; // הדפסת השלב
 	std::cout << m_gameInfo.getGoalPercent() << " ";
 }
 
@@ -108,7 +104,7 @@ void GameManager::initGameWindow()
 //====================================================================
 void GameManager::displayError(GameException& error)
 {
-	DisplayError displayerror(error, m_gameWindow);
+	ErrorWindow displayerror(error);
 	displayerror.display();
 }
 
