@@ -1,7 +1,7 @@
 ﻿#include "ErrorWindow.h"
 
 ErrorWindow::ErrorWindow(const GameException exception)
-    : m_erroeWindow(sf::VideoMode(1500, 800), "Error Window"),
+    : m_erroeWindow(sf::VideoMode(1700, 800), GameConsts::NAME_ERROR),
     m_exception(exception)
 {}
 

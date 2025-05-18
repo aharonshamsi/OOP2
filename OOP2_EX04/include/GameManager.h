@@ -1,15 +1,18 @@
 ﻿#pragma once
-#include <SFML/Graphics.hpp>
 #include <iostream>
 #include <fstream>
 #include <string> 
 #include <sstream>
 
+#include "Images.h"
 #include "GameException.h"
 #include "ErrorWindow.h"
-
-#include "GameConsts.h"
+#include "GameBoard.h"
 #include "GameInfo.h"
+
+#include "MovingObject.h"
+#include "Player.h"
+#include "Enemy.h"
 
 class GameManager {
 
@@ -21,6 +24,7 @@ public:
 private:
 	sf::RenderWindow m_gameWindow;
 	sf::Vector2f m_sizeWindow;
+	GameBoard m_gameBoard;
 	GameInfo m_gameInfo;
 
 	int m_neededArea; // יעד כבישה שצריך
@@ -30,4 +34,6 @@ private:
 	void initGameInfo(std::string& infoLevel);
 	void initGameWindow();
 	void displayError(GameException& error); // מציגה שגיאה על החלון
+	void createObjectsFromFile(); // מכניס אובייקטים שחקן ואייבים
+	void colorFrame(); //  צובע גבולות חלון
 };

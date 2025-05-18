@@ -1,11 +1,11 @@
 ﻿#pragma once
-#include "GameException.h"
 #include <SFML/Graphics.hpp>
+#include "GameException.h"
+#include "GameConsts.h"
 
 
 class ErrorWindow {
 
-public:
 public:
     ErrorWindow(const GameException exception);
  

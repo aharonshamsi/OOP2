@@ -8,6 +8,9 @@ void GameManager::run() {
 
 	try
 	{
+		Images::loadAllTextures(); // Loading static images
+
+
 		std::ifstream filePlaylist(GameConsts::NAME_FLAYLIST_LEVEL);
 		if (!filePlaylist.is_open())
 			throw GameException("Error: \n   Failed to open playlist file!");
@@ -20,7 +23,9 @@ void GameManager::run() {
 			std::string infoLevel;
 			readLevel(nameLevel, infoLevel);  // קורא פתוח קובץ השלב את הנתונים
 			initGameInfo(infoLevel);  // עם הנתונים שקרא info מאתחל את האויביקט  
-			initGameWindow();
+			initGameWindow(); // מעדכן גודל חלון
+			m_gameBoard.initBoard(m_sizeWindow); // מעדכן את הלוח בגודל החלון
+			createObjectsFromFile(); // יוצרת את ההאובייקטים בווקטור בהתאם לנתוני הקובץ
 
 
 			// לולאת המשחק=================
@@ -39,6 +44,7 @@ void GameManager::run() {
 
 
 				// עדכון הנתונים טקסט התחתית
+				colorFrame();
 				m_gameInfo.updateStatusText(); 
 				m_gameInfo.drawInfo(m_gameWindow);
 				m_gameWindow.display();
@@ -75,8 +81,8 @@ void GameManager::initGameInfo(std::string& infoLevel)
 	std::istringstream lineStream(infoLevel);
 
 	if (!(lineStream >> m_neededArea >> m_numEnemies >>
-		m_sizeWindow.x >> m_sizeWindow.y >> playerLives >> timeLevel)) {
-		throw GameException("Error: \n   Invalid data format in level file!");
+		m_sizeWindow.y >> m_sizeWindow.x >> playerLives >> timeLevel)) {
+			throw GameException("Error: \n   Invalid data format in level file!");
 	}
 
 	m_gameInfo.setPlayerLives(playerLives);
@@ -88,7 +94,8 @@ void GameManager::initGameInfo(std::string& infoLevel)
 	m_gameInfo.initStatusBar(m_sizeWindow);
 	//m_gameInfo.updateStatusText();
 
-	std:: cout <<"The level is: "<< m_sizeWindow.x << " " << m_sizeWindow.y; // הדפסת השלב
+
+	std:: cout <<"The level is: "<< m_sizeWindow.x << " " << m_sizeWindow.y <<" "; // הדפסת השלב
 	std::cout << m_gameInfo.getGoalPercent() << " ";
 }
 
@@ -100,6 +107,28 @@ void GameManager::initGameWindow()
 		static_cast<unsigned int>(m_sizeWindow.y)), GameConsts::NAME_GAME);
 }
 
+void GameManager::colorFrame()
+{
+	for (int i = 0; i < m_gameBoard.getRows(); i++) {
+		for (int j = 0; j < m_gameBoard.getCols(); j++) {
+			sf::RectangleShape tile(GameConsts::sizeTile);
+			if (m_gameBoard.isFrameTile(i, j)) { // אם אני במסגרת
+				tile.setPosition(m_gameBoard.getTileLocation(i, j));
+				tile.setFillColor(GameConsts::COLOR_FRAME);
+				m_gameWindow.draw(tile);
+			}
+		}
+	}
+}
+
+void GameManager::createObjectsFromFile()
+{
+	// פה יהיה ההכנס לווקטור של האובייקטים את השחקן ואייבים מיקום שירורותי, 
+	// צריך להשתמש בפנוצקיה של לוח שמחזירה מיקום אריחי מדוייק
+	//Player p(sf::Vector2f(m_gameBoard(0, m_gameBoard.getCols())), Cons);
+
+}
+
 
 //====================================================================
 void GameManager::displayError(GameException& error)
@@ -107,4 +136,8 @@ void GameManager::displayError(GameException& error)
 	ErrorWindow displayerror(error);
 	displayerror.display();
 }
+
+
+
+
 
