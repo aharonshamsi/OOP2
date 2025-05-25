@@ -7,7 +7,7 @@
 #include "Images.h"
 #include "GameException.h"
 #include "ErrorWindow.h"
-#include "GameBoard.h"
+#include "TileBoard.h"
 #include "GameInfo.h"
 
 #include "MovingObject.h"
@@ -24,16 +24,19 @@ public:
 private:
 	sf::RenderWindow m_gameWindow;
 	sf::Vector2f m_sizeWindow;
-	GameBoard m_gameBoard;
 	GameInfo m_gameInfo;
+	TileBoard m_boardTiles;
+	std::vector<std::unique_ptr<MovingObject>> m_objectMoving;
 
-	int m_neededArea; // יעד כבישה שצריך
-	int m_numEnemies; // מספר האויביים
+	int m_neededArea; 
+	int m_numEnemies; 
 
-	void readLevel(std::string& nameLevel, std::string& infoLevel); // 
+	void readLevel(std::string& nameLevel, std::string& infoLevel); 
 	void initGameInfo(std::string& infoLevel);
 	void initGameWindow();
-	void displayError(GameException& error); // מציגה שגיאה על החלון
-	void createObjectsFromFile(); // מכניס אובייקטים שחקן ואייבים
-	void colorFrame(); //  צובע גבולות חלון
+	void displayError(GameException& error); 
+	void createObject(); 
+	void drawObjects(); 
+	void restartObjectLoc();
+	void setAllInfo(int playerLives, float timeLevel);
 };

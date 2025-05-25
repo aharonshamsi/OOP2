@@ -21,7 +21,7 @@ void ErrorWindow::display()
             sf::Text text;
             text.setFont(font);
             text.setString(m_exception.what());
-            text.setCharacterSize(80);
+            text.setCharacterSize(50);
             text.setFillColor(sf::Color::Red);
             text.setPosition(50.f, 50.f);
 

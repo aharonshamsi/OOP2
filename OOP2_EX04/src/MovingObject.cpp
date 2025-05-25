@@ -5,3 +5,5 @@ MovingObject::MovingObject(const sf::Vector2f& location, const sf::Vector2f& wan
 	:Object(location, wantedSize, type),
 	m_firstLocation(location), m_direction(0.f, 0.f)
 {}
+
+

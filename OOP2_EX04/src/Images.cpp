@@ -1,11 +1,16 @@
 ﻿#include "Images.h"
 
 std::vector <sf::Texture> Images::m_pictures;
+std::vector<sf::Texture> Images::m_textures;
 
 void Images::loadAllTextures()
 {
+	loadTextures();
+
 	loadPlayer();
 	loadEnemy();
+	empty();
+	filled();
 }
 
 sf::Sprite Images::getSprite(const ObjectType& type, const sf::Vector2f& wantedSize)
@@ -22,6 +27,22 @@ sf::Sprite Images::getSprite(const ObjectType& type, const sf::Vector2f& wantedS
 	return sprite;
 }
 
+
+void Images::loadTextures() {
+	m_textures.resize(static_cast<int>(ObjectType::Count)); // Count הוא האחרון ב-Enum
+
+	m_textures[static_cast<int>(ObjectType::Empty)].loadFromFile("empty.png");
+	m_textures[static_cast<int>(ObjectType::Filled)].loadFromFile("filled.png");
+	m_textures[static_cast<int>(ObjectType::Frame)].loadFromFile("frame.png");
+	m_textures[static_cast<int>(ObjectType::Trail)].loadFromFile("trail.png");
+
+	// הוסף עוד לפי הצורך
+}
+
+const sf::Texture& Images::getTexture(ObjectType type) {
+	return m_textures[static_cast<int>(type)];
+}
+
 void Images::loadPlayer()
 {
 	if (!m_pictures.emplace_back().loadFromFile("player.png"))
@@ -34,3 +55,15 @@ void Images::loadEnemy()
 		throw GameException("Error: \n    Failed to load enemy image(file not found).");
 }
 
+void Images::empty()
+{
+	if (!m_pictures.emplace_back().loadFromFile("empty.png"))
+		throw GameException("Error: \n    Failed to load enemy image(file not found).");
+}
+
+
+void Images::filled()
+{
+	if (!m_pictures.emplace_back().loadFromFile("filled.png"))
+		throw GameException("Error: \n    Failed to load enemy image(file not found).");
+}

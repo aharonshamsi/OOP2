@@ -11,9 +11,16 @@ namespace GameConsts {
 
     extern const sf::Color COLOR_SHAPE_INFO; // צבע המלבן
     extern const sf::Color COLOR_TEXT_INFO;  // צבע הטקסט
-    extern const sf::Color COLOR_FRAME;  // צבע גבולות חלון המשחק
+
+    extern const sf::Color COLOR_FRAME;     // צבע גבולות חלון המשחק
+    extern const sf::Color COLOR_EMPTY;     // צבע שטח ריק
+    extern const sf::Color COLOR_TRAIL;     // צבע שובל של השחקן
+    extern const sf::Color COLOR_FILLED;    // צבע שטח שנכבש
+
 
     extern const unsigned int SIZE_CHARACTER; // גודל פונט
+    extern const unsigned int POINTS_PER_TILE; // פקטור נקודות לאריח
+    extern const unsigned int OVER_CAPTURE_BONUS; // פקטור לכובש יותר 10 אחוז מהנדרש
 
     extern sf::Vector2f sizeTile; // גודל אריח
 }

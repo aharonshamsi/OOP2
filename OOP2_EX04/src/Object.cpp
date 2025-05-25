@@ -9,9 +9,16 @@ Object::Object(const sf::Vector2f& location, const sf::Vector2f& wantedSize, con
 	m_picture.setPosition(m_location); // עדכון מיקום התמונה
 }
 
+void Object::draw(sf::RenderWindow& window)
+{
+	m_picture.setPosition(m_location);
+	window.draw(m_picture);
+}
+
+
+
 void Object::setSpriteByType(const sf::Vector2f& wantedSize)
 {
-
 	switch (m_type)
 	{
 	case ObjectType::Player:
