@@ -5,8 +5,7 @@ Object::Object(const sf::Vector2f& location, const sf::Vector2f& wantedSize, con
 	:m_location(location), m_type(type)
 {
 	setSpriteByType(wantedSize);
-
-	m_picture.setPosition(m_location); // עדכון מיקום התמונה
+	m_picture.setPosition(m_location);
 }
 
 void Object::draw(sf::RenderWindow& window)

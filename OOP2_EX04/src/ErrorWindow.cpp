@@ -9,9 +9,10 @@ void ErrorWindow::display()
 {
     sf::Font font;
     if (!font.loadFromFile("Athelas.ttc")) {
-        return; // לממש זריקה אם לא מצאתי את הפונט
+        return; 
     }
-    while (m_erroeWindow.isOpen()) {  // נבדוק שלא סיים את יעד הכבישה m_neededArea וכן שלא נגמר זמן וחיים 
+
+    while (m_erroeWindow.isOpen()) {  
         sf::Event event;
 
         while (m_erroeWindow.pollEvent(event)) {

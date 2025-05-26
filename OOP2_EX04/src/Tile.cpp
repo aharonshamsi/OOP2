@@ -28,6 +28,6 @@ void Tile::setSpriteByType()
 void Tile::setType(ObjectType type)
 {
     m_type = type;
-    m_picture.setTexture(Images::getTexture(type)); // במקום ObjectType::Filled
+    m_picture.setTexture(Images::getTexture(type));
     m_picture.setPosition(m_location);
 }

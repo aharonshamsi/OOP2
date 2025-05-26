@@ -9,7 +9,7 @@ void GameManager::run() {
 	try
 	{
 		Images::loadAllTextures(); // Loading static images
-
+		
 		std::ifstream filePlaylist(GameConsts::NAME_FLAYLIST_LEVEL);
 		if (!filePlaylist.is_open())
 			throw GameException("Error: \n   Failed to open playlist file!");
@@ -17,32 +17,26 @@ void GameManager::run() {
 
 		std::string nameLevel;
 
-		while (std::getline(filePlaylist, nameLevel)) { //צריך לטפל שאם נגמר חיים של שלב המשחק צריך להסתיים לגמרי ולא לעבור לשלב הבא 
-			
-			// ניתן פה להדפיס מעבר שלב עם השהייה
+		while (std::getline(filePlaylist, nameLevel)) {
 
-			std::string infoLevel;
-			readLevel(nameLevel, infoLevel);  // קורא פתוח קובץ השלב את הנתונים
-			initGameInfo(infoLevel);  // עם הנתונים שקרא info מאתחל את האויביקט  
-			initGameWindow(); // מעדכן גודל חלון
-			m_boardTiles.initTileBoard(m_sizeWindow);
-			createObject(); // יוצרת את ההאובייקטים בווקטור בהתאם לנתוני הקובץ
+			initLevel(nameLevel);
+			drawStartBackground();
 
-			sf::Clock clock; // יצירת שעון
+			sf::Clock clock;
 			clock.restart();
 
-			// לולאת המשחק=================
 			while (m_gameWindow.isOpen() && m_gameInfo.getPlayerLives() > 0) {
-
-				auto time = clock.restart().asSeconds(); // שומר זמן מקריאה לקיאה ומאפס
+				auto time = clock.restart().asSeconds(); 
 
 				sf::Event event;
 				while (m_gameWindow.pollEvent(event)) {
-					if (event.type == sf::Event::Closed)
+					if (event.type == sf::Event::Closed) {
 						m_gameWindow.close();
+						return;
+					}
 				}
 
-				// תזוזות
+				// HandleCollision management
 				for (int i = 0; i < m_objectMoving.size(); i++) {
 					m_objectMoving[i]->move(time, m_boardTiles, m_gameInfo);
 
@@ -52,36 +46,32 @@ void GameManager::run() {
 					}
 				}
 
-				// אם היה כבישה של שטח נעדכן לוח ונתנוים
-				if (m_gameInfo.getNeedAreaCheck()) { // צריך לעדכן שיכנס רק מתי שהחקן על מצב שובל דחוף וחובה
+				// Checking the area occupied
+				if (m_gameInfo.getNeedAreaCheck()) { 
 					m_boardTiles.markCapturedArea();
 					m_gameInfo.setNeedAreaCheck(false);
 				}
 
-				// בדיקת פסול אחרי כל הלוגיקה
+				// Player disqualified
 				if (m_gameInfo.getIsViolation()) {
-					restartObjectLoc(); // איפוס מיקום שחקן
-					m_boardTiles.restartTrail();    // איפוס שובל הלוח
-					m_gameInfo.restartViolation();; // איפוס הדגל
+					restartObjectLoc(); 
+					m_boardTiles.restartTrail(); 
+					m_gameInfo.restartViolation();
 					continue;                        
 				}
 
+				drawManager();
 
-				m_gameWindow.clear();
-				m_boardTiles.draw(m_gameWindow);
-				m_gameInfo.updateStatusText();
-				m_gameInfo.drawInfo(m_gameWindow);
-				drawObjects();
-				m_gameWindow.display();
-
-
-				if (m_gameInfo.getCapturedPercent() > m_neededArea)
+				if (m_gameInfo.getCapturedPercent() >= m_neededArea)
 					break;
 			}
+			if (m_gameInfo.getPlayerLives() <= 0) {
+				drawFinishGame();
+				return;
+			}
 
+			m_gameInfo.resetInfo();
 		}
-		//m_gameInfo.setnumLevel()
-		//m_gameInfo.resetInfo(); //נאפס את הנתונים
 
 	}
 
@@ -93,8 +83,18 @@ void GameManager::run() {
 
 }
 
-//====================================================================
-void GameManager::readLevel(std::string& nameLevel, std::string& infoLevel)
+
+void GameManager::initLevel(const std::string& nameLevel)
+{
+	std::string infoLevel;
+	readLevel(nameLevel, infoLevel);
+	initGameInfo(infoLevel);
+	initGameWindow();
+	m_boardTiles.initTileBoard(m_sizeWindow);
+	createObject();
+}
+
+void GameManager::readLevel(const std::string& nameLevel, std::string& infoLevel)
 {
 	std::ifstream fileLevel(nameLevel);
 	if (!fileLevel.is_open())
@@ -102,7 +102,7 @@ void GameManager::readLevel(std::string& nameLevel, std::string& infoLevel)
 	std::getline(fileLevel, infoLevel);
 }
 
-//====================================================================
+
 void GameManager::initGameInfo(std::string& infoLevel)
 {
 	int playerLives;
@@ -116,19 +116,16 @@ void GameManager::initGameInfo(std::string& infoLevel)
 	}
 
 	setAllInfo(playerLives, timeLevel);
-
-	std:: cout <<"The level is: "<< m_sizeWindow.x << " " << m_sizeWindow.y <<" "; // הדפסת השלב
-	std::cout << m_gameInfo.getGoalPercent() << " ";
+	m_gameInfo.initStatusBar(m_sizeWindow);
 }
 
 
-//====================================================================
 void GameManager::initGameWindow()
 {
 	m_gameWindow.create(sf::VideoMode(static_cast<unsigned int>(m_sizeWindow.x),
 		static_cast<unsigned int>(m_sizeWindow.y)), GameConsts::NAME_GAME);
 	m_gameWindow.clear();
-	m_gameWindow.setFramerateLimit(60); //  הגבלת FPS
+	m_gameWindow.setFramerateLimit(60); 
 
 }
 
@@ -136,10 +133,9 @@ void GameManager::initGameWindow()
 void GameManager::createObject()
 {
 	m_objectMoving.clear();
-	sf::Vector2f locPlayer = m_boardTiles.getTileLocByIndex(29/*m_boardTiles.getCols() / 2*/, 0);
-
+	sf::Vector2f locPlayer = m_boardTiles.getTileLocByIndex(m_boardTiles.getCols() / 2, 0);
 	m_objectMoving.push_back(std::make_unique<Player>(locPlayer, m_boardTiles.getSizeTile()));
-	// מגריל מיקם רנדומאלי לאוייבים
+
 	for (int i = 0; i < m_numEnemies; i++) {
 		sf::Vector2f locEnemy = m_boardTiles.randLocation();
 		m_boardTiles.getTileLoc(locEnemy);
@@ -160,6 +156,43 @@ void GameManager::restartObjectLoc()
 		m_objectMoving[i]->restartLoc();
 }
 
+void GameManager::drawManager()
+{
+	m_gameWindow.clear();
+	m_boardTiles.draw(m_gameWindow);
+	m_gameInfo.updateStatusText();
+	m_gameInfo.drawInfo(m_gameWindow);
+	drawObjects();
+	m_gameWindow.display();
+}
+
+void GameManager::drawBackground()
+{
+	Background image(GameConsts::NAME_FILE_IMAGE_BACKGROUND, m_sizeWindow);
+	image.background(m_gameWindow);
+}
+
+void GameManager::drawFinishGame()
+{
+	Background imageFinish(GameConsts::NAME_FILE_IMAGE_FINISH, m_sizeWindow);
+	imageFinish.background(m_gameWindow);
+}
+
+void GameManager::displayError(GameException& error)
+{
+	ErrorWindow displayerror(error);
+	displayerror.display();
+}
+
+void GameManager::drawStartBackground()
+{
+	if (m_gameInfo.getNumLevel() == 1)
+		drawFinishGame();
+	else
+		drawBackground();
+}
+
+
 void GameManager::setAllInfo(int playerLives, float timeLevel)
 {
 	m_gameInfo.setPlayerLives(playerLives);
@@ -167,18 +200,9 @@ void GameManager::setAllInfo(int playerLives, float timeLevel)
 	m_gameInfo.setCountDown(timeLevel);
 	m_gameInfo.setScore(m_gameInfo.getScore());
 	m_gameInfo.setSizeWindow(m_sizeWindow);
-	m_gameInfo.setnumLevel(m_gameInfo.getNumLevel()+1); // נגדיל את מספר השלב
+	m_gameInfo.setnumLevel(m_gameInfo.getNumLevel()+1);
 	m_gameInfo.setCapturedPercent(0);
-	m_gameInfo.setTileCoun(0); // נאפס את מספר האריחים שנכבשו בתור שעבר
-	m_gameInfo.initStatusBar(m_sizeWindow);
-
-}
-
-
-//====================================================================
-void GameManager::displayError(GameException& error)
-{
-	ErrorWindow displayerror(error);
-	displayerror.display();
+	m_gameInfo.setTileCoun(0); 
+	m_gameInfo.setCapturedArea(m_neededArea);
 }
 

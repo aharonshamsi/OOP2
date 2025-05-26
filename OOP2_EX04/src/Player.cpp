@@ -33,15 +33,13 @@ sf::FloatRect Player::getGlobalBounds() const
 }
 
 void Player::handleCollision(Object& object, GameInfo& gameInfo) {
-	// השלב הראשון - מזמן את פונקציית ההתמחות מהצד השני
-	object.handleCollision(*this, gameInfo);  // -> Enemy::handleCollision(Player&)
+	object.handleCollision(*this, gameInfo);  
 }
 
 
 void Player::handleCollision(Enemy& enemy, GameInfo& gameInfo) {
 	if (this->getGlobalBounds().intersects(enemy.getGlobalBounds())) {
 		gameInfo.setIsViolation(true);
-		// אם יש חפיפה בין הגבולות
 	}
 }
 
@@ -49,48 +47,39 @@ void Player::handleCollision(Enemy& enemy, GameInfo& gameInfo) {
 
 void Player::move(float& seconds, TileBoard& boardTiles, GameInfo& gameInfo)
 {
-	static ObjectType prevTileType = ObjectType::Frame; // מצב קודם של אריח – מתחילים ממסגרת
+	static ObjectType prevTileType = ObjectType::Frame; 
 
-	// אם שינה כיוון נעדכן את המיקום לראש האריח
 	sf::Vector2f lastDirection = getWantedDirection();
 	if (lastDirection != m_direction) {
 		m_location = boardTiles.getTileLoc(m_location);
 	}
-
 	m_direction = getWantedDirection();
-	//===========
-	// חישוב מיקום חדש
+
 	sf::Vector2f newLocation = m_location + (m_direction * seconds * MovementConsts::MOVE_PIXEL_PLAYER);
 
-	// בדיקת תחום לוח
+	// Checking the board domain
 	if (boardTiles.inArea(newLocation)) {
 		m_picture.move(newLocation);
 		m_location = newLocation;
-		trailMarker(newLocation, boardTiles); // סימון שביל
+		trailMarker(newLocation, boardTiles); // Trail marking
 	}
-
-	// בדיקת סוג האריח הנוכחי
 
 	ObjectType currentTileType = boardTiles.getTypeAtLocation(boardTiles.getTileLoc(m_location));
 
-	// עדכון needAreaCheck אם עבר מ-Empty ל-Frame או ל-Filled (שטח שכבר נכבש)
 	if ((currentTileType == ObjectType::Frame || currentTileType == ObjectType::Filled) &&
-		(prevTileType == ObjectType::Empty || prevTileType == ObjectType::Trail))
-	{
-		std::cout << "j\n";
+		(prevTileType == ObjectType::Empty || prevTileType == ObjectType::Trail)) {
 		gameInfo.setNeedAreaCheck(true);
 	}
-
-
 	prevTileType = currentTileType;
 }
+
 
 
 void Player::trailMarker(const sf::Vector2f& newLocation, TileBoard& boardTiles)
 {
 	sf::Vector2f locMarker = boardTiles.getTileLoc(newLocation);
 
-	// אם הכיוון הוא שמאלה – נבדוק אריח ימינה
+	// If the direction is left – we will check the tile to the right
 	if (m_direction == MovementConsts::DIRECTION_LEFT) {
 		sf::Vector2f loc(newLocation.x + GameConsts::sizeTile.x, newLocation.y);
 		if (boardTiles.inArea(loc) &&
@@ -100,7 +89,8 @@ void Player::trailMarker(const sf::Vector2f& newLocation, TileBoard& boardTiles)
 			boardTiles.getTile(loc)->setType(ObjectType::Trail);
 		}
 	}
-	// אם הכיוון הוא למעלה – נבדוק אריח למטה
+
+	// The direction is up – we will check the tile below. 
 	else if (m_direction == MovementConsts::DIRECTION_UP) {
 		sf::Vector2f loc(newLocation.x, newLocation.y + GameConsts::sizeTile.y);
 		if (boardTiles.inArea(loc) &&
@@ -110,7 +100,7 @@ void Player::trailMarker(const sf::Vector2f& newLocation, TileBoard& boardTiles)
 			boardTiles.getTile(loc)->setType(ObjectType::Trail);
 		}
 	}
-	// כל כיוון אחר – מסמנים את המיקום עצמו אם הוא לא מסגרת ולא Filled
+
 	else if (boardTiles.inArea(newLocation) &&
 		!boardTiles.isframeTile(boardTiles.getTileLoc(newLocation)) &&
 		boardTiles.getTypeAtLocation(newLocation) != ObjectType::Filled)

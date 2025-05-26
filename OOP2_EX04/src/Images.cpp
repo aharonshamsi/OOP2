@@ -6,20 +6,19 @@ std::vector<sf::Texture> Images::m_textures;
 void Images::loadAllTextures()
 {
 	loadTextures();
-
 	loadPlayer();
 	loadEnemy();
 	empty();
 	filled();
 }
 
+
 sf::Sprite Images::getSprite(const ObjectType& type, const sf::Vector2f& wantedSize)
 {
 	int index = static_cast<int>(type);
 
 	sf::Sprite sprite;
-	sprite.setTexture(m_pictures[index]); // טעינה תמונה 
-	// נתאים את גודל התמונה 
+	sprite.setTexture(m_pictures[index]); 
 	float scaleX = wantedSize.x / m_pictures[index].getSize().x; 
 	float scaleY = wantedSize.y / m_pictures[index].getSize().y;
 	sprite.setScale(sf::Vector2f(scaleX, scaleY));
@@ -29,14 +28,12 @@ sf::Sprite Images::getSprite(const ObjectType& type, const sf::Vector2f& wantedS
 
 
 void Images::loadTextures() {
-	m_textures.resize(static_cast<int>(ObjectType::Count)); // Count הוא האחרון ב-Enum
 
+	m_textures.resize(static_cast<int>(ObjectType::Count));
 	m_textures[static_cast<int>(ObjectType::Empty)].loadFromFile("empty.png");
 	m_textures[static_cast<int>(ObjectType::Filled)].loadFromFile("filled.png");
 	m_textures[static_cast<int>(ObjectType::Frame)].loadFromFile("frame.png");
 	m_textures[static_cast<int>(ObjectType::Trail)].loadFromFile("trail.png");
-
-	// הוסף עוד לפי הצורך
 }
 
 const sf::Texture& Images::getTexture(ObjectType type) {

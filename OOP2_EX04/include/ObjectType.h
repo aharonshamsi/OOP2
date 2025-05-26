@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 enum class ObjectType {
-
 	Player,
 	Enemy,
 	Empty,
@@ -9,7 +8,4 @@ enum class ObjectType {
 	Frame,
 	Trail,
 	Count
-
-	// ולשים הקצאה במחלקה תמונותCount // תמיד להשאיר אחרון כדי לדעת את הגודל
-
 };

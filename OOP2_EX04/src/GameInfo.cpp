@@ -1,7 +1,5 @@
 ﻿#include "GameInfo.h"
-#include "GameInfo.h"
-#include "GameInfo.h"
-#include "GameInfo.h"
+#include <iostream>
 
 GameInfo::GameInfo()
 :m_capturedArea(0),
@@ -14,10 +12,9 @@ m_numEnemys(0),
 m_countDown(0),
 m_sizeWindow(0, 0),
 m_isViolation(false),
-m_needAreaCheck(false) // צריך להפעיל רקורסיה
+m_needAreaCheck(false)
 {}
 
-// עדכון מיקום הטקסט והצורה בתחתית החלון
 void GameInfo::initStatusBar(sf::Vector2f& sizeWindow)
 {
     m_font.loadFromFile("Athelas.ttc");
@@ -25,13 +22,12 @@ void GameInfo::initStatusBar(sf::Vector2f& sizeWindow)
     m_text.setCharacterSize(GameConsts::SIZE_CHARACTER);
     m_text.setFillColor(GameConsts::COLOR_TEXT_INFO);
 
-    // קביעת הצורה של המלבן
-    m_shape.setSize(sf::Vector2f(sizeWindow.x, sizeWindow.y / 7));  // אם אני משנה את גודל החלון אז לשנות את 8 לפי עשרית מגובה החלון החדש 8 כעת זה מגובה 700
+    int hightToolbar = static_cast<int> (sizeWindow.y / 100);
+    m_shape.setSize(sf::Vector2f(sizeWindow.x, sizeWindow.y / hightToolbar));
     m_shape.setPosition(0.f, sizeWindow.y - m_shape.getSize().y);
     m_shape.setFillColor(sf::Color(GameConsts::COLOR_SHAPE_INFO));
 }
 
-// עדכון קריאת הטקסט בכל פריים 
 void GameInfo::updateStatusText()
 {
     int minutes, seconds;
@@ -44,15 +40,13 @@ void GameInfo::updateStatusText()
         "    Time: " + (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" +
         (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-
-
     m_text.setString(info);
 
-// חישוב מיקום טקסט חדש במרכז המלבן (אם האורך של הטקסט משתנה) יש תזוזות בגודל הטקסט בגלל השעון, אז נבדוק בהמשך לעשות כניסה ראשונה
     sf::FloatRect textBounds = m_text.getLocalBounds();
     m_text.setPosition(
         (m_sizeWindow.x - textBounds.width) / 2.f,
-        m_sizeWindow.y - m_shape.getSize().y + (m_shape.getSize().y - textBounds.height) / 2.f - textBounds.top
+        m_sizeWindow.y - m_shape.getSize().y + 
+        (m_shape.getSize().y - textBounds.height) / 2.f - textBounds.top
     );
 
 }
@@ -64,15 +58,15 @@ void GameInfo::drawInfo(sf::RenderWindow& window)
     window.draw(m_text);
 }
 
-//
-//void GameInfo::resetInfo()
-//{
-//    m_capturedArea = 0;
-//    m_playerLives = 0;
-//    m_countDown = 0;
-//    m_numEnemys = 0;
-//    m_capturedPercent = 0;
-//}
+
+void GameInfo::resetInfo()
+{
+    m_capturedArea = 0;
+    m_playerLives = 0;
+    m_countDown = 0;
+    m_numEnemys = 0;
+    m_capturedPercent = 0;
+}
 
 int GameInfo::getCapturedPercent() const
 {
@@ -98,6 +92,7 @@ void GameInfo::updateRemainingTime(int& minutes, int& seconds)
 }
 
 
+
 void GameInfo::updateCapturedArea(int filledTiles, int totalTiles)
 {
     if (totalTiles == 0)
@@ -105,8 +100,8 @@ void GameInfo::updateCapturedArea(int filledTiles, int totalTiles)
     else
         m_capturedPercent = static_cast<int> (100.f * filledTiles) / totalTiles;
 
-    if (m_capturedPercent >= m_capturedArea + 10)
-        m_capturedPercent = m_capturedPercent + GameConsts::OVER_CAPTURE_BONUS; // פאקטור כשישת ייתר
+    if (m_capturedPercent >= m_capturedArea + 10)  // Compression factor 10+
+        m_score = m_score + GameConsts::OVER_CAPTURE_BONUS;
 }
 
 

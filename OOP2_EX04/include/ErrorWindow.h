@@ -8,8 +8,6 @@ class ErrorWindow {
 
 public:
     ErrorWindow(const GameException exception);
- 
-
 
     void display();
 

@@ -4,8 +4,7 @@
 #include "GameException.h"
 #include "vector"
 
-class Images
-{
+class Images {
 
 public:
 	static void loadAllTextures();
@@ -17,7 +16,6 @@ private:
 	static std::vector<sf::Texture> m_textures;
 	
 	static void loadTextures();
-
 	static void loadPlayer();
 	static void loadEnemy();
 	static void empty();

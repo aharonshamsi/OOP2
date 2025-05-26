@@ -5,6 +5,7 @@
 #include <sstream>
 
 #include "Images.h"
+#include "Background.h"
 #include "GameException.h"
 #include "ErrorWindow.h"
 #include "TileBoard.h"
@@ -31,12 +32,19 @@ private:
 	int m_neededArea; 
 	int m_numEnemies; 
 
-	void readLevel(std::string& nameLevel, std::string& infoLevel); 
+	void initLevel(const std::string& nameLevel);
+	void readLevel(const std::string& nameLevel, std::string& infoLevel);
 	void initGameInfo(std::string& infoLevel);
 	void initGameWindow();
 	void displayError(GameException& error); 
 	void createObject(); 
 	void drawObjects(); 
 	void restartObjectLoc();
+	void drawManager();
+	void drawBackground();
+	void drawFinishGame();
+	void drawStartBackground();
 	void setAllInfo(int playerLives, float timeLevel);
+	
+
 };

@@ -16,3 +16,6 @@ configure_file ("filled.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("frame.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("trail.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("background.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("finishGame.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
