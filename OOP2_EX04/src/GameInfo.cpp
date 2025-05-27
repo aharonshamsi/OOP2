@@ -119,6 +119,6 @@ void GameInfo::addScoreForCaptured(int filledTiles)
 
 void GameInfo::restartViolation()
 {
-    m_playerLives = m_playerLives - 1;
     m_isViolation = false;
+    m_playerLives = m_playerLives - 1;
 }

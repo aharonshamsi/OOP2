@@ -19,4 +19,9 @@ public:
 private:
 	void trailMarker(const sf::Vector2f& newLocation, TileBoard& boardTiles);
 	const sf::Vector2f getWantedDirection() const;
+
+	void handleDirectionChange(TileBoard& boardTiles);
+	bool handleBoundaryLimits(GameInfo& gameInfo);
+	void updatePosition(const sf::Vector2f& newLocation, TileBoard& boardTiles);
+	void handleTileType(TileBoard& boardTiles, GameInfo& gameInfo, ObjectType& prevTileType);
 };

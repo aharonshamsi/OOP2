@@ -146,3 +146,15 @@ bool TileBoard::isframeTileForMove(const sf::Vector2f& location) const {
 
     return row == 0 || row == m_rows - 2 || col == 0 || col == m_cols - 2;
 }
+
+bool TileBoard::isPlayerOutOfBounds(const sf::Vector2f& location) const
+{
+    const float boardWidth = getCols() * GameConsts::sizeTile.x;
+    const float boardHeight = getRows() * GameConsts::sizeTile.y;
+    const float epsilon = 0.01f;
+
+    return location.x < 0.0f ||
+        location.y < 0.0f ||
+        location.x > boardWidth - epsilon ||
+        location.y > boardHeight - epsilon;
+}

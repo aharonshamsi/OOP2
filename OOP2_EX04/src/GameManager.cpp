@@ -57,7 +57,6 @@ void GameManager::run() {
 					restartObjectLoc(); 
 					m_boardTiles.restartTrail(); 
 					m_gameInfo.restartViolation();
-					continue;                        
 				}
 
 				drawManager();

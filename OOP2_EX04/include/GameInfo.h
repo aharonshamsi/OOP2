@@ -27,6 +27,7 @@ public:
     bool getIsViolation()    const { return m_isViolation; }
     bool getNeedAreaCheck()  const { return m_needAreaCheck; }
     int  getCapturedPercent() const;
+    sf::Vector2f getSizeWindow() const { return m_sizeWindow; }
 
     // Functional
     void restartViolation();

@@ -28,6 +28,7 @@ public:
     bool inArea(const sf::Vector2f& newLocation) const;
     bool isframeTile(const sf::Vector2f& location) const;
     bool isframeTileForMove(const sf::Vector2f& location) const;
+    bool isPlayerOutOfBounds(const sf::Vector2f& location) const;
 
     ObjectType getType(int row, int col) const;
     ObjectType getTypeAtLocation(const sf::Vector2f& loc) const;
