@@ -18,7 +18,6 @@ void Enemy::handleCollision(Object& object, GameInfo& gameInfo) {
 
 void Enemy::handleCollision(Player& player, GameInfo& gameInfo) {
     if (this->getGlobalBounds().intersects(player.getGlobalBounds())) {
-        std::cout << gameInfo.getPlayerLives() << " ";
         gameInfo.setIsViolation(true);
     }
 }

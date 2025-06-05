@@ -1,4 +1,4 @@
-#include "FunctionCalculator.h"
+﻿#include "FunctionCalculator.h"
 
 #include <string>
 #include <iostream>
