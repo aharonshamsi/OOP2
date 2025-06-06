@@ -204,4 +204,3 @@ void GameManager::setAllInfo(int playerLives, float timeLevel)
 	m_gameInfo.setTileCoun(0); 
 	m_gameInfo.setCapturedArea(m_neededArea);
 }
-
