@@ -12,7 +12,7 @@ void Watch::handleClick(State & state, sf::RenderWindow & window, sf::Event & ev
 	state.setWatch(true);
 
 	//std::string command = "start " + m_url; // Windows
-	//system(command.c_str());
+	//system(command.c_str()); 
 
 	ShellExecuteA(nullptr, "open", m_url.c_str(), nullptr, nullptr, SW_SHOWNORMAL); // פקודת מערכת לפתיחת הסירטון
 }
