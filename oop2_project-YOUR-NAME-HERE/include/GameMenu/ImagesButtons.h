@@ -16,4 +16,5 @@ private:
     static void loadStore();
     static void loadHelp();
     static void loadExit();
+    static void loadWatch();
 };

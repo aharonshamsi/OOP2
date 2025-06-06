@@ -10,6 +10,7 @@ void ImagesButton::loadAllTextures()
 	loadStore();
 	loadHelp();
 	loadExit();
+	loadWatch();
 }
 
 sf::Sprite ImagesButton::getSpinte(const TypeButton& type, const sf::Vector2f& wantedSize)
@@ -48,4 +49,10 @@ void ImagesButton::loadExit()
 {
 	if (!m_pictures[static_cast<int>(TypeButton::Exit)].loadFromFile("Exit.png"))
 		std::cout << "Error: \n    Failed to load Exit button image (file not found).";
+}
+
+void ImagesButton::loadWatch()
+{
+	if (!m_pictures[static_cast<int>(TypeButton::Watch)].loadFromFile("Watch.png"))
+		std::cout << "Error: \n    Failed to load Watch button image (file not found).";
 }

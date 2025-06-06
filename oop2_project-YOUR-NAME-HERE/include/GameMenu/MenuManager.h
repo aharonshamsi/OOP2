@@ -7,6 +7,7 @@
 #include "Exit.h"
 #include "Help.h"
 #include "Store.h"
+#include "Watch.h"
 
 
 class MenuManager {

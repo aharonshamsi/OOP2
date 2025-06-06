@@ -16,6 +16,7 @@ void ImagesObject::loadAllTextures()
 }
 
 
+
 //void ImagesObject::loadPlayer()
 //{
 //	if (!m_pictures[static_cast<int>(TypeObject::player)].loadFromFile("Player.png"))
@@ -33,6 +34,7 @@ void ImagesObject::loadAllTextures()
 //	if(!m_pictures[static_cast<int>(TypeObject::StupidEnemy)].loadFromFile("StupidEnemy.png"))
 //		std::cout << "Error: \n    Failed to load Stupid Enemy image (file not found).";
 //}
+
 
 
 sf::Sprite ImagesObject::getSpinte(const TypeObject& type, const sf::Vector2f wantedSize)

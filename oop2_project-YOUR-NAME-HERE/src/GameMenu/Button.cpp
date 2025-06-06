@@ -34,6 +34,10 @@ void Button::updateSpritesForAll(const sf::Vector2f& wantedSize)
 		m_sprite = ImagesButton::getSpinte(TypeButton::Exit, wantedSize);
 		break;
 
+	case TypeButton::Watch:
+		m_sprite = ImagesButton::getSpinte(TypeButton::Watch, wantedSize);
+		break;
+
 	default:
 		break;
 	}

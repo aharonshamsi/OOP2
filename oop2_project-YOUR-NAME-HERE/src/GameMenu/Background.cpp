@@ -10,7 +10,7 @@ Background::Background()
 
 	sf::Vector2f sizePictur(
 		GameData::SIZE_GAME_WINDOW.x,
-		GameData::SIZE_GAME_WINDOW.y - GameData::HIGHT_WINDOW_INFO
+		GameData::SIZE_GAME_WINDOW.y
 	);
 
 	m_sprint.setScale(

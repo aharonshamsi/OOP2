@@ -6,6 +6,7 @@ enum class TypeButton {
 	Store,
 	Help,
 	Exit,
+	Watch,
 	count
 
 };

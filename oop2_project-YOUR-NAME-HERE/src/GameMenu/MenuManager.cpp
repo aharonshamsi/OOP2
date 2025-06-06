@@ -7,6 +7,7 @@ MenuManager::MenuManager(sf::RenderWindow& window)
 	m_button.push_back(std::make_unique<Exit>(ButtonData::LOC_EXIT, ButtonData::SIZE_BUTTON));
 	m_button.push_back(std::make_unique<Help>(ButtonData::LOC_HELP, ButtonData::SIZE_BUTTON));
 	m_button.push_back(std::make_unique<Store>(ButtonData::LOC_STORE, ButtonData::SIZE_BUTTON));
+	m_button.push_back(std::make_unique<Watch>(ButtonData::LOC_WATCH, ButtonData::SIZE_BUTTON));
 }
 
 void MenuManager::handleButtonClick(const sf::Vector2f& mousePos, sf::Event& event)
@@ -23,7 +24,6 @@ void MenuManager::runMenu(sf::Event& event)
 	m_stateButton.initStates();
 
 	while (!handleStart() || !handleExit()){
-
 		m_window.clear();
 		backgroundMenu.draw(m_window);
 		drawMenu();
