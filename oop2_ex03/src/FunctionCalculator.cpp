@@ -391,4 +391,3 @@ FunctionCalculator::ActionMap FunctionCalculator::createActions() const
         }
     };
 }
-
