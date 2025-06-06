@@ -27,3 +27,4 @@ protected:
 	bool m_isInputValid;
 
 };
+
