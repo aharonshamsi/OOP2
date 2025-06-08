@@ -17,4 +17,5 @@ private:
     static void loadHelp();
     static void loadExit();
     static void loadWatch();
+    static void loadGitHub();
 };

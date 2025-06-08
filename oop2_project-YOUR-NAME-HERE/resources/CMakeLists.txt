@@ -4,6 +4,7 @@ configure_file ("Store.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Help.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Watch.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("GitHub.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("Athelas.ttc" ${CMAKE_BINARY_DIR} COPYONLY)

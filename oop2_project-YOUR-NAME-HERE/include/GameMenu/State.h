@@ -11,6 +11,7 @@ public:
     void setHelp(bool value);
     void setStore(bool value);
     void setWatch(bool value);
+    void setGitHub(bool value);
 
     // Getters
     bool isStart() const;
@@ -18,6 +19,7 @@ public:
     bool isHelp() const;
     bool isStore() const;
     bool isWatch() const;
+    bool isGitHub() const;
 
     void initStates();
 
@@ -27,4 +29,5 @@ private:
 	bool m_help;
 	bool m_store;
     bool m_watch;
+    bool m_gitHub;
 };

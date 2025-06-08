@@ -38,6 +38,10 @@ void Button::updateSpritesForAll(const sf::Vector2f& wantedSize)
 		m_sprite = ImagesButton::getSpinte(TypeButton::Watch, wantedSize);
 		break;
 
+	case TypeButton::GitHub:
+		m_sprite = ImagesButton::getSpinte(TypeButton::GitHub, wantedSize);
+		break;
+
 	default:
 		break;
 	}

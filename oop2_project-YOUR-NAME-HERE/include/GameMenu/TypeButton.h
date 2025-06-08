@@ -7,6 +7,7 @@ enum class TypeButton {
 	Help,
 	Exit,
 	Watch,
+	GitHub,
 	count
 
 };

@@ -8,6 +8,7 @@
 #include "Help.h"
 #include "Store.h"
 #include "Watch.h"
+#include "GitHubLink.h"
 
 
 class MenuManager {

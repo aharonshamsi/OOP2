@@ -7,7 +7,9 @@ MenuManager::MenuManager(sf::RenderWindow& window)
 	m_button.push_back(std::make_unique<Exit>(ButtonData::LOC_EXIT, ButtonData::SIZE_BUTTON));
 	m_button.push_back(std::make_unique<Help>(ButtonData::LOC_HELP, ButtonData::SIZE_BUTTON));
 	m_button.push_back(std::make_unique<Store>(ButtonData::LOC_STORE, ButtonData::SIZE_BUTTON));
-	m_button.push_back(std::make_unique<Watch>(ButtonData::LOC_WATCH, ButtonData::SIZE_BUTTON));
+
+	m_button.push_back(std::make_unique<Watch>(ButtonData::LOC_WATCH, ButtonData::SIZE_ICON_BUTTON));
+	m_button.push_back(std::make_unique<GitHubLink>(ButtonData::LOC_GIT_HUB, ButtonData::SIZE_ICON_BUTTON));
 }
 
 void MenuManager::handleButtonClick(const sf::Vector2f& mousePos, sf::Event& event)

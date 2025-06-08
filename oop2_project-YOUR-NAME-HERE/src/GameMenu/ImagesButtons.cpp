@@ -11,6 +11,7 @@ void ImagesButton::loadAllTextures()
 	loadHelp();
 	loadExit();
 	loadWatch();
+	loadGitHub();
 }
 
 sf::Sprite ImagesButton::getSpinte(const TypeButton& type, const sf::Vector2f& wantedSize)
@@ -55,4 +56,10 @@ void ImagesButton::loadWatch()
 {
 	if (!m_pictures[static_cast<int>(TypeButton::Watch)].loadFromFile("Watch.png"))
 		std::cout << "Error: \n    Failed to load Watch button image (file not found).";
+}
+
+void ImagesButton::loadGitHub()
+{
+	if (!m_pictures[static_cast<int>(TypeButton::GitHub)].loadFromFile("GitHub.png"))
+		std::cout << "Error: \n    Failed to load GitHub button image (file not found).";
 }
