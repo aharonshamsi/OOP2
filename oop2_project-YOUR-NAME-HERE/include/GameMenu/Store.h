@@ -1,5 +1,6 @@
 #pragma once
-#include "GameMenu/Button.h"
+#include "Button.h"
+#include "GameStore.h"
 
 class Store : public Button {
 
@@ -9,5 +10,5 @@ public:
 	void handleClick(State& state, sf::RenderWindow& window, sf::Event& event) override;
 
 private:
-
+	GameStore m_gameStore;
 };

@@ -23,7 +23,7 @@ public:
 
 private:
 
-	Background backgroundMenu; // תמונה רקע של התפריט
+	Background m_backgroundMenu; // תמונה רקע של התפריט
 	std::vector<std::unique_ptr<Button>> m_button;
 
 	State m_stateButton;

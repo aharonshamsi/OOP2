@@ -3,7 +3,7 @@
 
 
 Watch::Watch(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
-	:Button(TypeButton::Watch, location, wantedSize),
+	:Button(GameObjectType::Watch, location, wantedSize),
 	m_url("https://www.youtube.com/watch?v=YOUR_VIDEO_ID") // קישור  של סירטון של המחשק
 {}
 

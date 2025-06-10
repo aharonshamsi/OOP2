@@ -6,7 +6,7 @@ class GameControler {
 public:
     GameControler();
 
-    void runGeometryDash();
+    void run();
 
 private:
     sf::RenderWindow m_window;

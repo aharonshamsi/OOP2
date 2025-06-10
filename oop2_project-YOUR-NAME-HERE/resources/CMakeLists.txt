@@ -6,5 +6,8 @@ configure_file ("Exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Watch.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GitHub.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
+configure_file ("playerOne.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("BackgroundStore.png" ${CMAKE_BINARY_DIR} COPYONLY)
+
 
 configure_file ("Athelas.ttc" ${CMAKE_BINARY_DIR} COPYONLY)

@@ -1,6 +1,6 @@
 ﻿#include "GameMenu/Button.h"
 
-Button::Button(const TypeButton& type, const sf::Vector2f& location, const sf::Vector2f& wantedSize)
+Button::Button(const GameObjectType& type, const sf::Vector2f& location, const sf::Vector2f& wantedSize)
 	:m_type(type), m_location(location)
 {
 	updateSpritesForAll(wantedSize);
@@ -18,28 +18,28 @@ void Button::updateSpritesForAll(const sf::Vector2f& wantedSize)
 {
 	switch (m_type)
 	{
-	case TypeButton::Start:
-		m_sprite = ImagesButton::getSpinte(TypeButton::Start, wantedSize);
+	case GameObjectType::Start:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::Start, wantedSize);
 		break;
 
-	case TypeButton::Store:
-		m_sprite = ImagesButton::getSpinte(TypeButton::Store, wantedSize);
+	case GameObjectType::Store:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::Store, wantedSize);
 		break;
 
-	case TypeButton::Help:
-		m_sprite = ImagesButton::getSpinte(TypeButton::Help, wantedSize);
+	case GameObjectType::Help:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::Help, wantedSize);
 		break;
 
-	case TypeButton::Exit:
-		m_sprite = ImagesButton::getSpinte(TypeButton::Exit, wantedSize);
+	case GameObjectType::Exit:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::Exit, wantedSize);
 		break;
 
-	case TypeButton::Watch:
-		m_sprite = ImagesButton::getSpinte(TypeButton::Watch, wantedSize);
+	case GameObjectType::Watch:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::Watch, wantedSize);
 		break;
 
-	case TypeButton::GitHub:
-		m_sprite = ImagesButton::getSpinte(TypeButton::GitHub, wantedSize);
+	case GameObjectType::GitHub:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::GitHub, wantedSize);
 		break;
 
 	default:

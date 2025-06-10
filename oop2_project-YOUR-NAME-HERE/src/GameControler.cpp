@@ -7,7 +7,7 @@ GameControler::GameControler()
 {}
 
 
-void GameControler::runGeometryDash()
+void GameControler::run()
 {
 	while (m_window.isOpen()) {
 

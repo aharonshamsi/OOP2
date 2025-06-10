@@ -3,9 +3,9 @@
 
 int main()
 {
-	ImagesButton::loadAllTextures(); // תעינת תמונות מל תפריט
+	ImagesObject::loadAllTextures(); // תעינת תמונות מל תפריט
 	FontHolder::loadFont();
 
 	GameControler gameControler;
-	gameControler.runGeometryDash();
+	gameControler.run();
 }
