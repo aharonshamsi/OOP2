@@ -42,6 +42,14 @@ void Button::updateSpritesForAll(const sf::Vector2f& wantedSize)
 		m_sprite = ImagesObject::getSpinte(GameObjectType::GitHub, wantedSize);
 		break;
 
+	case GameObjectType::Done:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::Done, wantedSize);
+		break;
+
+	case GameObjectType::Cancel:
+		m_sprite = ImagesObject::getSpinte(GameObjectType::Cancel, wantedSize);
+		break;
+
 	default:
 		break;
 	}

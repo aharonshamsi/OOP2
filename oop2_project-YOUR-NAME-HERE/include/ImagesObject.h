@@ -18,6 +18,8 @@ private:
     static void loadExit();
     static void loadWatch();
     static void loadGitHub();
+    static void loadDone();
+    static void loadCancel();
 
 
     static void loadplayerOne();

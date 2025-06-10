@@ -8,6 +8,9 @@ enum class GameObjectType {
 	Exit,
 	Watch,
 	GitHub,
+	Done,
+	Cancel,
+
 	playerOne,
 	//player,
 	//SmartEnemy,

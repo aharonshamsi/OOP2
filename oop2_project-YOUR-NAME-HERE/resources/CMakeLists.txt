@@ -8,6 +8,8 @@ configure_file ("GitHub.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 configure_file ("playerOne.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("BackgroundStore.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Done.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("Cancel.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 configure_file ("Athelas.ttc" ${CMAKE_BINARY_DIR} COPYONLY)

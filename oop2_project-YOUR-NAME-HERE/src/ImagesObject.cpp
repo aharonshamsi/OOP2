@@ -13,6 +13,8 @@ void ImagesObject::loadAllTextures()
 	loadWatch();
 	loadGitHub();
 
+	loadDone();
+	loadCancel();
 	loadplayerOne();
 }
 
@@ -64,6 +66,18 @@ void ImagesObject::loadGitHub()
 {
 	if (!m_pictures[static_cast<int>(GameObjectType::GitHub)].loadFromFile("GitHub.png"))
 		std::cout << "Error: \n    Failed to load GitHub button image (file not found).";
+}
+
+void ImagesObject::loadDone()
+{
+	if (!m_pictures[static_cast<int>(GameObjectType::Done)].loadFromFile("Done.png"))
+		std::cout << "Error: \n    Failed to load Done button image (file not found).";
+}
+
+void ImagesObject::loadCancel()
+{
+	if (!m_pictures[static_cast<int>(GameObjectType::Cancel)].loadFromFile("Cancel.png"))
+		std::cout << "Error: \n    Failed to load Cancel button image (file not found).";
 }
 
 void ImagesObject::loadplayerOne()
