@@ -7,5 +7,5 @@ int main()
 	FontHolder::loadFont();
 
 	GameControler gameControler;
-	gameControler.run();
+	//gameControler.run();
 }

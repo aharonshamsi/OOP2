@@ -8,8 +8,7 @@ Button::Button(const GameObjectType& type, const sf::Vector2f& location, const s
 
 bool Button::isPressed(const sf::Vector2f& mousePos) const
 {
-	return mousePos.x >= m_location.x && mousePos.x <= m_location.x + ButtonData::SIZE_BUTTON.x &&
-		mousePos.y >= m_location.y && mousePos.y <= m_location.y + ButtonData::SIZE_BUTTON.y;
+	return m_sprite.getGlobalBounds().contains(mousePos);
 }
 
 

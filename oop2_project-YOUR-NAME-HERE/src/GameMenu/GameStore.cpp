@@ -12,6 +12,7 @@ GameStore::GameStore()
 	m_buttonStore.push_back(std::make_unique<Cancel>(ButtonData::LOC_CANCEL, ButtonData::SIZE_ICON_BUTTON));
 }
 
+
 void GameStore::runStore(sf::RenderWindow& window, State& state, sf::Event& event)
 {
 		state.initStatesStore();
@@ -20,11 +21,9 @@ void GameStore::runStore(sf::RenderWindow& window, State& state, sf::Event& even
 
 			if (event.type == sf::Event::Closed)
 				return;
-			window.clear();
-			// פה נדפיס רקע
-			m_backgroundStore.draw(window);
 
-			// הדפסת כפתורים חנות
+			window.clear();
+			m_backgroundStore.draw(window);
 			drawStore(window);
 			clickManagerChar(window, state, event);
 			window.display();
@@ -44,17 +43,15 @@ void GameStore::drawStore(sf::RenderWindow& window)
 
 void GameStore::clickManagerChar(sf::RenderWindow& window, State& state, sf::Event& event)
 {
-
 	sf::Vector2f mousePos;
 	while (window.pollEvent(event)) {
 		if (event.type == sf::Event::MouseButtonPressed) {
 			mousePos = window.mapPixelToCoords(
 				sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 
+			handleButtonClick(window, mousePos, event, state);
+			clickManagerButton(mousePos, state, window, event);
 		}
-		handleButtonClick(window, mousePos, event, state);
-		clickManagerButton(mousePos, state, window, event);
-
 	}
 }
 

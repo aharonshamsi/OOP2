@@ -16,9 +16,9 @@ public:
     void draw(sf::RenderWindow& window);
 
 protected:
-    GameObjectType m_type;
+    GameObjectType m_type; // down
     sf::Sprite m_sprite;
     sf::Vector2f m_location;
 
-    void updateSpritesForAll(const sf::Vector2f& wantedSize);
+    void updateSpritesForAll(const sf::Vector2f& wantedSize); // to movit
 };

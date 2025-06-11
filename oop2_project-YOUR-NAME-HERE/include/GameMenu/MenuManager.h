@@ -2,6 +2,9 @@
 #include "Button.h"
 #include "vector"
 
+#include "MenuInfo.h"
+
+
 #include "Background.h"
 #include "Start.h"
 #include "Exit.h"
@@ -14,12 +17,12 @@
 class MenuManager {
 
 public:
-	MenuManager(sf::RenderWindow& window);
+	MenuManager();
 
 
-	void runMenu(sf::Event& event);
-	bool handleStart() const; // מחזירה אם נלחץ כפתור התחלת משחק
-	bool handleExit() const;
+	void runMenu(MenuInfo& info, sf::RenderWindow& window);
+	bool needToStart() const; 
+	bool needToExit() const;
 
 private:
 
@@ -27,9 +30,8 @@ private:
 	std::vector<std::unique_ptr<Button>> m_button;
 
 	State m_stateButton;
-	sf::RenderWindow& m_window;
 	
-	void handleButtonClick(const sf::Vector2f& mousePos, sf::Event& event); // בודקת אם כפתור נחלץ ומפעילה את התנהגות הכפתור
-	void drawMenu();
-	void clickManager(sf::Event& event);
+	void handleButtonClick(sf::RenderWindow& window, const sf::Vector2f& mousePos, sf::Event& event); // בודקת אם כפתור נחלץ ומפעילה את התנהגות הכפתור
+	void drawMenu(sf::RenderWindow& window);
+	void clickManager(sf::RenderWindow& window);
 };
