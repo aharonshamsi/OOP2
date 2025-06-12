@@ -1,13 +1,13 @@
 ﻿#include "GameMenu/Store.h"
 
 Store::Store(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
-	:Button(location)
+:Button(location)
 {
 	m_sprite = ImageMenu::getSpinte(GameObjectType::Store, wantedSize);
 }
 
-void Store::handleClick(State & state, sf::RenderWindow& window, sf::Event& event)
+MenuAction Store::handleClick(Info& info, sf::RenderWindow& window)
 {
-	state.setStore(true);
-	m_gameStore.runStore(window, state, event /*,info*/); // Open Store
+    m_gameStore.runStore(info, window); 
+    return MenuAction::None;
 }

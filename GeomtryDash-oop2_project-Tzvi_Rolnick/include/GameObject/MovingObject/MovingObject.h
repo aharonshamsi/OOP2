@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject/Object.h"
 #include <iostream>
-#include "Information.h"
+#include "Info.h"
 
 class MovingObject : public Object
 {

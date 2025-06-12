@@ -9,9 +9,8 @@ Watch::Watch(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
 	m_sprite = ImageMenu::getSpinte(GameObjectType::Watch, wantedSize);
 }
 
-
-void Watch::handleClick(State & state, sf::RenderWindow & window, sf::Event & event)
+MenuAction Watch::handleClick(Info& info, sf::RenderWindow& window)
 {
-	state.setWatch(true);
 	ShellExecuteA(nullptr, "open", m_url.c_str(), nullptr, nullptr, SW_SHOWNORMAL); // Open link
+	return MenuAction::None;
 }

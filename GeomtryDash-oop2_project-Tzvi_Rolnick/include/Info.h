@@ -1,15 +1,23 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "GameObject/Images/TypeObject.h"
 
-class Information
+class Info
 {
 public:
-	Information();
+	Info();
 	void draw(sf::RenderWindow&);
+
 	//-- set function --
 	void setNumLevel(int level) { m_numLevel = level; }
+	//void setTypePlayer(TypeObject& type) { m_typePlayer = type; }
+
 	//-- get function --
 	int getNumLevel() const {return m_numLevel; }
+	//TypeObject getTypePlayer() const { return m_typePlayer; }
+	
+
 private:
 	int m_numLevel;
+	//TypeObject m_typePlayer;
 };

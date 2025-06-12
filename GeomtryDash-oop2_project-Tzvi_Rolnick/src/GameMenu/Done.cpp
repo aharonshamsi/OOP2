@@ -6,7 +6,7 @@ Done::Done(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
 	m_sprite = ImageMenu::getSpinte(GameObjectType::Done, wantedSize);
 }
 
-void Done::handleClick(State& state, sf::RenderWindow& window, sf::Event& event)
+MenuAction Done::handleClick(Info& info, sf::RenderWindow& window)
 {
-	state.setDoneButton(true);
+	return MenuAction::Done;
 }

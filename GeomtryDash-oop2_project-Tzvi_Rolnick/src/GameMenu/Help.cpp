@@ -13,18 +13,19 @@ Help::Help(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
 
 }
 
-void Help::handleClick(State & state, sf::RenderWindow& window, sf::Event& event)
+MenuAction Help::handleClick(Info& info, sf::RenderWindow& window)
 {
-	state.setHelp(true);
+    sf::Event event;
+    while (window.waitEvent(event)) {
 
-	while (window.waitEvent(event)) {
-		if (event.type == sf::Event::Closed)
-			return;
+        if (event.type == sf::Event::Closed)
+            return MenuAction::None;
 
-		window.clear();
-		window.draw(m_instructionText);
-		window.display();
-	}
+        window.clear();
+        window.draw(m_instructionText);
+        window.display();
+    }
+    return MenuAction::None;
 }
 
 

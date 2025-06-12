@@ -12,58 +12,45 @@ MenuManager::MenuManager()
 	m_button.push_back(std::make_unique<GitHubLink>(ButtonData::LOC_GIT_HUB, ButtonData::SIZE_ICON_BUTTON));
 }
 
-void MenuManager::handleButtonClick(sf::RenderWindow& window, const sf::Vector2f& mousePos, sf::Event& event)
+
+MenuAction MenuManager::runMenu(Info& info, sf::RenderWindow& window)
 {
-	for (int i = 0; i < m_button.size(); i++) {
-		if (m_button[i]->isPressed(mousePos))
-			m_button[i]->handleClick(m_stateButton, window, event);
-	}
-}
-
-
-void MenuManager::runMenu(MenuInfo& info, sf::RenderWindow& window)
-{
-	m_stateButton.initStates();
-
-	while (!needToStart() && !needToExit()){
+	while (true) {
 		window.clear();
 		m_backgroundMenu.draw(window);
 		drawMenu(window);
-		clickManager(window);
+		MenuAction result = clickManager(window, info);
 		window.display();
+
+		if (result != MenuAction::None)
+			return result;
 	}
 }
 
 
-bool MenuManager::needToStart() const
-{
-	return m_stateButton.isStart();
-}
-
-bool MenuManager::needToExit() const{
-	return m_stateButton.isExit();
-}
-
-
-void MenuManager::drawMenu(sf::RenderWindow& window)
-{
-
-	for (int i = 0; i < m_button.size(); i++)
-		m_button[i]->draw(window);
-
-}
-
-
-void MenuManager::clickManager(sf::RenderWindow& window)
+MenuAction MenuManager::clickManager(sf::RenderWindow& window, Info& info)
 {
 	sf::Event event;
-
 	while (window.pollEvent(event)) {
 		if (event.type == sf::Event::MouseButtonPressed) {
 			sf::Vector2f mousePos = window.mapPixelToCoords(
 				sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
 
-			handleButtonClick(window, mousePos, event);
+			for (auto& button : m_button) {
+				if (button->isPressed(mousePos)) {
+					return button->handleClick(info, window);
+				}
+			}
 		}
 	}
+	return MenuAction::None;
 }
+
+
+
+void MenuManager::drawMenu(sf::RenderWindow& window)
+{
+	for (int i = 0; i < m_button.size(); i++)
+		m_button[i]->draw(window);
+}
+

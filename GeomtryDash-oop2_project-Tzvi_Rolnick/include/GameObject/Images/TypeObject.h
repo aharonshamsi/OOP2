@@ -6,6 +6,7 @@ enum class TypeObject {
 	SpriteSheet,
 	Enemy,
 	Obstacle,
+	player,
 	PlayerOne,
 	count
 };

@@ -4,11 +4,13 @@ PlayerOne::PlayerOne(const sf::Vector2f& location, const sf::Vector2f& wantedSiz
 	:Button(location)
 {
 	m_sprite = m_sprite = ImageMenu::getSpinte(GameObjectType::playerOne, wantedSize);
-
 }
 
-void PlayerOne::handleClick(State& state, sf::RenderWindow& window, sf::Event& event)
+MenuAction PlayerOne::handleClick(Info& info, sf::RenderWindow& window)
 {
-	std::cout << "FF";
-	// נעדכן את info לtype
+	////info.setNumLevel(1); // need to change
+	//info.setTypePlayer(TypeObject::PlayerOne);
+
+	return MenuAction::None;
 }
+

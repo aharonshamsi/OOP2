@@ -8,9 +8,8 @@ GitHubLink::GitHubLink(const sf::Vector2f& location, const sf::Vector2f& wantedS
 	m_sprite = ImageMenu::getSpinte(GameObjectType::GitHub, wantedSize);
 }
 
-void GitHubLink::handleClick(State & state, sf::RenderWindow & window, sf::Event & event)
+MenuAction GitHubLink::handleClick(Info& info, sf::RenderWindow& window)
 {
-	state.setGitHub(true);
-
-	ShellExecuteA(nullptr, "open", m_url.c_str(), nullptr, nullptr, SW_SHOWNORMAL); 
+	ShellExecuteA(nullptr, "open", m_url.c_str(), nullptr, nullptr, SW_SHOWNORMAL);
+	return MenuAction::None;
 }

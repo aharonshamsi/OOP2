@@ -6,7 +6,7 @@ Cancel::Cancel(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
 	m_sprite = ImageMenu::getSpinte(GameObjectType::Cancel, wantedSize);
 }
 
-void Cancel::handleClick(State& state, sf::RenderWindow& window, sf::Event& event)
+MenuAction Cancel::handleClick(Info& info, sf::RenderWindow& window)
 {
-	state.setCancelButton(true);
+	return MenuAction::Cancel;
 }

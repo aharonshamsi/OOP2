@@ -6,8 +6,8 @@ Exit::Exit(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
 	m_sprite = ImageMenu::getSpinte(GameObjectType::Exit, wantedSize);
 }
 
-void Exit::handleClick(State & state, sf::RenderWindow& window, sf::Event& event)
+MenuAction Exit::handleClick(Info& info, sf::RenderWindow& window)
 {
-	state.setExit(true);
+	return MenuAction::ExitGame;
 }
 

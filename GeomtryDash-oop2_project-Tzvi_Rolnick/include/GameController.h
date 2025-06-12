@@ -9,7 +9,7 @@
 #include"GameObject/Images/TypeObject.h"
 #include"GameObject/Images/ImagesObject.h"
 #include "GameMenu/MenuManager.h"
-#include "Information.h"
+#include "Info.h"
 #include "GameMenu/MenuInfo.h"
 
 
@@ -21,7 +21,6 @@ public:
 	void run();
 private:
 	//-- function ----
-	void handleMenu();
 	void analyzeLevel();
 	void mainLoop();
 	void handleEvent();
@@ -34,15 +33,17 @@ private:
 	//void clearAllVec(); //m_movingObjVec.clear(); m_staticObjVec.clear();
 	void updateAfterLevel();
 
+	void handleMenuAction(MenuAction action);
+
 	void readFromFile();
 	//--- data member ----
 	std::vector <std::unique_ptr<MovingObject>> m_movingObjVec;
 	std::vector <std::unique_ptr<StaticObject>> m_staticObjVec;
 
-	Information m_information;
+	Info m_information;
 	sf::RenderWindow m_window;
 	MenuManager m_menuManager;
 	bool m_need2exit = false;// in class states
 	sf::Clock m_clock;
-	MenuInfo m_menuInfo;
+	Info m_menuInfo;
 };

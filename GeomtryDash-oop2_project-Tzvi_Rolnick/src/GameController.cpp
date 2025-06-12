@@ -11,27 +11,41 @@ GameController::GameController()
 	readFromFile();
 
 }
-//-------------------------------------
+
+
 void GameController::run()
 {
-
 	while (!m_need2exit) {
+		m_window.setView(sf::View(sf::FloatRect(0.f, 0.f, 800.f, 900.f)));
+		MenuAction action = m_menuManager.runMenu(m_menuInfo, m_window);
+		m_window.setView(sf::View(sf::FloatRect(0.f, 0.f, 800.f, 900.f)));
 
-			m_window.setView(sf::View(sf::FloatRect(0.f, 0.f, 800.f, 900.f))); // איפוס מצלמה
-			m_menuManager.runMenu(m_menuInfo, m_window); // תריץ תפריט
-			m_window.setView(sf::View(sf::FloatRect(0.f, 0.f, 800.f, 900.f))); // 
-
-			handleMenu();
-			updateAfterLevel();	
+		handleMenuAction(action);
+		updateAfterLevel();
 	}
-	// i think its need to be like this ^
-
 }
+
+void GameController::handleMenuAction(MenuAction action)
+{
+	switch (action) {
+	case MenuAction::StartLevel:
+		analyzeLevel();
+		mainLoop();
+		break;
+
+	case MenuAction::ExitGame:
+		m_need2exit = true;
+		break;
+
+	default:
+		break;
+	}
+}
+
+
 //-------------------------------------
 void GameController::mainLoop()
 {
-
-
 
 	m_clock.restart();// not to get a lot of time itch time that the function called
 	while (m_window.isOpen()) {
@@ -91,20 +105,7 @@ void GameController::handleCollisionController()
 
 
 }
-//-------------------------------------
-void GameController::handleMenu()
-{
-	if (m_menuManager.needToStart())
-	{
-		analyzeLevel();
-		mainLoop();
-	}
-	else if (m_menuManager.needToExit())
-	{
-		m_need2exit = true;
-		//m_window.close();
-	}
-}
+
 //-------------------------------------
 void GameController::analyzeLevel()
 {
@@ -136,7 +137,7 @@ void GameController::analyzeLevel()
 
 		else if (c == 'p') {
 			sf::Vector2f loc{ static_cast<float>(col) * 50.f, static_cast<float>(row) * 50.f };
-			m_movingObjVec.push_back(std::make_unique<Player>(loc, images.getSpriteObject(TypeObject::PlayerOne)));
+			m_movingObjVec.push_back(std::make_unique<Player>(loc, images.getSpriteObject(TypeObject::player)));
 		}
 		col++;
 		if (c == '\n')

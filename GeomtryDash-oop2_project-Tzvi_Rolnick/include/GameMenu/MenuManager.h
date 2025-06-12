@@ -19,19 +19,12 @@ class MenuManager {
 public:
 	MenuManager();
 
-
-	void runMenu(MenuInfo& info, sf::RenderWindow& window);
-	bool needToStart() const; 
-	bool needToExit() const;
+	MenuAction runMenu(Info& info, sf::RenderWindow& window);
 
 private:
-
-	Background m_backgroundMenu; // תמונה רקע של התפריט
+	Background m_backgroundMenu;
 	std::vector<std::unique_ptr<Button>> m_button;
-
-	State m_stateButton;
 	
-	void handleButtonClick(sf::RenderWindow& window, const sf::Vector2f& mousePos, sf::Event& event); // בודקת אם כפתור נחלץ ומפעילה את התנהגות הכפתור
 	void drawMenu(sf::RenderWindow& window);
-	void clickManager(sf::RenderWindow& window);
+	MenuAction clickManager(sf::RenderWindow& window, Info& info);
 };

@@ -40,9 +40,15 @@ sf::Sprite ImagesObject::getSpriteObject(const TypeObject& type) const
         sprite.setTextureRect(sf::IntRect(440, 430, 50, 50));
         break;
 
+
+    case TypeObject::player:
+        sprite.setTextureRect(sf::IntRect(250, 637, 50, 50));
+        break;
+
     case TypeObject::PlayerOne:
         sprite.setTextureRect(sf::IntRect(639, 710, 50, 50));
         break;
+
 
     default:
         return sf::Sprite(); 

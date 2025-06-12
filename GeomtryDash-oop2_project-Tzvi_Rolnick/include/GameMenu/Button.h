@@ -3,6 +3,8 @@
 #include "ImageMenu.h"
 #include "ButtonData.h"
 #include "State.h"
+#include "MenuAction.h"
+#include "Info.h"
 
 
 class Button {
@@ -11,7 +13,7 @@ public:
     virtual ~Button() = default;
 
     bool isPressed(const sf::Vector2f& mousePos) const;
-    virtual void handleClick(State& state, sf::RenderWindow& window, sf::Event& event) = 0;
+    virtual MenuAction handleClick(Info& info, sf::RenderWindow& window) = 0;
 
     void draw(sf::RenderWindow& window);
 
