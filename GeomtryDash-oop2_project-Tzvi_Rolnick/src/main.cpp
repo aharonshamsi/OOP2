@@ -4,6 +4,7 @@
 
 int main()
 {
+	ImagesObject::loadAllImagesObject(); // load images
 	ImageMenu::loadAllTextures();
 	FontHolder::loadFont();
 

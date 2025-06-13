@@ -17,4 +17,11 @@ namespace ButtonData {
     const sf::Vector2f LOC_DONE = { 320.f, 770.f }; // מיקום כפתור gitHub
     const sf::Vector2f LOC_CANCEL = { 410.f, 770.f }; // מיקום כפתור gitHub
 
+
+    // קבועים של דמויות חנות
+    const sf::Vector2f SIZE_BUY_PLAYER = { 140.f, 140.f }; // גודל דמות שחקן בחנות
+
+    const sf::Vector2f LOC_PAYER1 = { 140.f, 290.f }; // מיקום דמות שחקן 1 בחנות
+
+
 }

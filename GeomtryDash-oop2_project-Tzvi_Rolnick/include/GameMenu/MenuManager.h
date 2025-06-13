@@ -2,8 +2,6 @@
 #include "Button.h"
 #include "vector"
 
-#include "MenuInfo.h"
-
 
 #include "Background.h"
 #include "Start.h"

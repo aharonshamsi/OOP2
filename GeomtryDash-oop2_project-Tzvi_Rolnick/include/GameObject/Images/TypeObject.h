@@ -7,6 +7,7 @@ enum class TypeObject {
 	Enemy,
 	Obstacle,
 	player,
+	PlayerCharacters,
 	PlayerOne,
 	count
 };

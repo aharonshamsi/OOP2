@@ -1,15 +1,18 @@
 ﻿#include "GameMenu/playerOne.h"
 
 PlayerOne::PlayerOne(const sf::Vector2f& location, const sf::Vector2f& wantedSize)
-	:Button(location)
+    : CharactersButton(location, wantedSize)
 {
-	m_sprite = m_sprite = ImageMenu::getSpinte(GameObjectType::playerOne, wantedSize);
+    m_sprite = ImagesObject::getSpritePlayer(TypeObject::PlayerOne);
+	scaleCharacters(wantedSize);
 }
+
 
 MenuAction PlayerOne::handleClick(Info& info, sf::RenderWindow& window)
 {
 	////info.setNumLevel(1); // need to change
-	//info.setTypePlayer(TypeObject::PlayerOne);
+	if (info.buyPlayer(TypeObject::PlayerOne))
+		std::cout << "buy cecssek\n";
 
 	return MenuAction::None;
 }

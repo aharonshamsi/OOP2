@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "GameMenu/Button.h"
+#include "Button.h"
 #include "FontHolder.h"
 
 class Help : public Button {

@@ -6,6 +6,7 @@ configure_file ("Exit.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("Watch.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GitHub.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("GeometryDashSpriteSheet.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("PlayerCharacters.png" ${CMAKE_BINARY_DIR} COPYONLY)
 
 
 

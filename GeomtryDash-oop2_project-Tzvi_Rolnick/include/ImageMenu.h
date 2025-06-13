@@ -6,8 +6,8 @@
 class ImageMenu {
 public:
     static void loadAllTextures();
-    static sf::Sprite getSpinte(const GameObjectType& type, const sf::Vector2f& wantedSize);
 
+    static sf::Sprite getSpinte(const GameObjectType& type, const sf::Vector2f& wantedSize);
 
 private:
     static std::vector<sf::Texture> m_pictures;
@@ -22,6 +22,6 @@ private:
     static void loadCancel();
 
 
-    static void loadplayerOne();
+    //static void loadSpriteSheet();
 
 };

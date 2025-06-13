@@ -15,7 +15,7 @@ void ImageMenu::loadAllTextures()
 
 	loadDone();
 	loadCancel();
-	loadplayerOne();
+	//loadplayerOne();
 }
 
 sf::Sprite ImageMenu::getSpinte(const GameObjectType& type, const sf::Vector2f& wantedSize)
@@ -80,8 +80,10 @@ void ImageMenu::loadCancel()
 		std::cout << "Error: \n    Failed to load Cancel button image (file not found).";
 }
 
-void ImageMenu::loadplayerOne()
-{
-	if (!m_pictures[static_cast<int>(GameObjectType::playerOne)].loadFromFile("playerOne.png"))
-		std::cout << "Error: \n    Failed to load playerOne button image (file not found).";
-}
+//void ImageMenu::loadSpriteSheet()
+//{
+//	if (!m_pictures[static_cast<int>(GameObjectType::SpriteSheet)].loadFromFile("GeometryDashSpriteSheet.png"))
+//		std::cout << "Error: \n    Failed to load Geometry Dash Sprite Sheet image (file not found).";
+//}
+
+

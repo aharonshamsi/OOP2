@@ -10,3 +10,16 @@ void Info::draw(sf::RenderWindow& window)
 	//...
 }
 
+bool Info::buyPlayer(TypeObject type)
+{
+	m_typePlayer = type;
+	return true;
+
+	//if (/*Check many*/) {
+	//	m_typePlayer = type;
+	//	return true;
+	//}
+	//return false;
+
+}
+

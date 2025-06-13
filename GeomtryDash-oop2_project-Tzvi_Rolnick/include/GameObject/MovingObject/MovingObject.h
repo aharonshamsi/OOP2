@@ -11,7 +11,7 @@ public:
 
 	virtual void move(float) = 0;
 	virtual bool isDead() const { return m_dead; }
-	virtual void updateDirection() {}; // ????
+	virtual void updateDirection() {}; 
 
 protected:
 	bool m_dead = false;

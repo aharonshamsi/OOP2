@@ -10,14 +10,15 @@ public:
 
 	//-- set function --
 	void setNumLevel(int level) { m_numLevel = level; }
-	//void setTypePlayer(TypeObject& type) { m_typePlayer = type; }
+	//void setTypePlayer(TypeObject type) { m_typePlayer = type; }
 
 	//-- get function --
 	int getNumLevel() const {return m_numLevel; }
-	//TypeObject getTypePlayer() const { return m_typePlayer; }
-	
+	TypeObject getTypePlayer() const { return m_typePlayer; }
+
+	bool buyPlayer(TypeObject type);
 
 private:
 	int m_numLevel;
-	//TypeObject m_typePlayer;
+	TypeObject m_typePlayer = TypeObject::player;
 };

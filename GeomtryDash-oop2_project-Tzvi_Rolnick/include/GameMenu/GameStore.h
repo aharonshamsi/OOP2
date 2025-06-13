@@ -7,12 +7,6 @@
 #include "Done.h"
 #include "Cancel.h"
 
-struct CharacterOption
-{
-	std::unique_ptr<Button> button;
-	bool acquired = false;
-};
-
 
 class GameStore {
 
@@ -24,7 +18,7 @@ public:
 private:
 
 	std::vector<std::unique_ptr<Button>> m_buttonStore;
-	std::vector<CharacterOption> m_character;
+	std::vector<std::pair<std::unique_ptr<Button>, bool>> m_character;
 
 	Background m_backgroundStore;
 	bool m_runStore;

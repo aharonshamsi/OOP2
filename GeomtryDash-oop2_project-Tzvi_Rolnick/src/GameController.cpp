@@ -17,7 +17,7 @@ void GameController::run()
 {
 	while (!m_need2exit) {
 		m_window.setView(sf::View(sf::FloatRect(0.f, 0.f, 800.f, 900.f)));
-		MenuAction action = m_menuManager.runMenu(m_menuInfo, m_window);
+		MenuAction action = m_menuManager.runMenu(m_Info, m_window);
 		m_window.setView(sf::View(sf::FloatRect(0.f, 0.f, 800.f, 900.f)));
 
 		handleMenuAction(action);
@@ -96,7 +96,7 @@ void GameController::draw()
 	for (const auto& movingObj : m_movingObjVec)
 		movingObj->draw(m_window);
 
-	m_information.draw(m_window);
+	m_Info.draw(m_window);
 	m_window.display();
 }
 //-------------------------------------
@@ -109,14 +109,12 @@ void GameController::handleCollisionController()
 //-------------------------------------
 void GameController::analyzeLevel()
 {
-	ImagesObject images;
+	//ImagesObject images;
 
-
-
-	std::fstream file("level" + std::to_string(m_information.getNumLevel()) + ".txt");
+	std::fstream file("level" + std::to_string(m_Info.getNumLevel()) + ".txt");
 	if (!file.is_open())
 	{
-		std::cerr << "Error: Failed to open file: Level" << m_information.getNumLevel() << ".txt" << std::endl;
+		std::cerr << "Error: Failed to open file: Level" << m_Info.getNumLevel() << ".txt" << std::endl;
 		return;
 	}
 
@@ -127,17 +125,17 @@ void GameController::analyzeLevel()
 
 		if (c == '#') {
 			sf::Vector2f loc{ static_cast<float>(col) * 50.f, static_cast<float>(row) * 50.f };
-			m_staticObjVec.push_back(std::make_unique<Obstacle>(loc, images.getSpriteObject(TypeObject::Enemy)));
+			m_staticObjVec.push_back(std::make_unique<Obstacle>(loc, ImagesObject::getSpriteObject(TypeObject::Enemy)));
 
 		}
 		else if (c == '@') {
 			sf::Vector2f loc{ static_cast<float>(col) * 50.f, static_cast<float>(row) * 50.f };
-			m_movingObjVec.push_back(std::make_unique<Enemy>(loc, images.getSpriteObject(TypeObject::Obstacle)));
+			m_movingObjVec.push_back(std::make_unique<Enemy>(loc, ImagesObject::getSpriteObject(TypeObject::Obstacle)));
 		}
 
 		else if (c == 'p') {
 			sf::Vector2f loc{ static_cast<float>(col) * 50.f, static_cast<float>(row) * 50.f };
-			m_movingObjVec.push_back(std::make_unique<Player>(loc, images.getSpriteObject(TypeObject::player)));
+			m_movingObjVec.push_back(std::make_unique<Player>(loc, ImagesObject::getSpritePlayer(m_Info.getTypePlayer())));
 		}
 		col++;
 		if (c == '\n')

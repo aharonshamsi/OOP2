@@ -10,7 +10,6 @@
 #include"GameObject/Images/ImagesObject.h"
 #include "GameMenu/MenuManager.h"
 #include "Info.h"
-#include "GameMenu/MenuInfo.h"
 
 
 
@@ -40,10 +39,10 @@ private:
 	std::vector <std::unique_ptr<MovingObject>> m_movingObjVec;
 	std::vector <std::unique_ptr<StaticObject>> m_staticObjVec;
 
-	Info m_information;
+	//Info m_information;
 	sf::RenderWindow m_window;
 	MenuManager m_menuManager;
 	bool m_need2exit = false;// in class states
 	sf::Clock m_clock;
-	Info m_menuInfo;
+	Info m_Info;
 };
