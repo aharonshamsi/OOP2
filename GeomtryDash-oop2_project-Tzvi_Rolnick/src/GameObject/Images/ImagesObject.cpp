@@ -50,7 +50,7 @@ sf::Sprite ImagesObject::getSpriteObject(const TypeObject& type)
         sprite.setTextureRect(sf::IntRect(639, 710, 50, 50));
         break;
 
-    case TypeObject::PlayerOne:
+    case TypeObject::PlayeraAlpha:
         sprite.setTextureRect(sf::IntRect(490, 660, 32, 32));
         break;
 
@@ -76,9 +76,35 @@ sf::Sprite ImagesObject::getSpritePlayer(const TypeObject& type)
         sprite.setScale(50.f / 270.f, 50.f / 263.f);
         break;
 
-    case TypeObject::PlayerOne:
-        sprite.setTextureRect(sf::IntRect(54, 458, 248, 266));
-        sprite.setScale(50.f / 248.f, 50.f / 266.f);
+    case TypeObject::PlayeraAlpha:
+        sprite.setTextureRect(sf::IntRect(269, 197, 295, 295));
+        sprite.setScale(50.f / 295.f, 50.f / 295.f);
+        break;
+
+    case TypeObject::PlayeraBeta:
+        sprite.setTextureRect(sf::IntRect(603, 194, 300, 300));
+        sprite.setScale(50.f / 300.f, 50.f / 300.f);
+        break;
+
+
+    case TypeObject::PlayerGamma:
+        sprite.setTextureRect(sf::IntRect(603, 544, 300, 300));
+        sprite.setScale(50.f / 300.f, 50.f / 300.f);
+        break;
+
+    case TypeObject::PlayerDelta:
+        sprite.setTextureRect(sf::IntRect(268, 544, 300, 300));
+        sprite.setScale(50.f / 300.f, 50.f / 300.f);
+        break;
+
+    case TypeObject::PlayerEpsilon:
+        sprite.setTextureRect(sf::IntRect(941, 544, 293, 300));
+        sprite.setScale(50.f / 293.f, 50.f / 300.f);
+        break;
+
+    case TypeObject::PlayerZeta:
+        sprite.setTextureRect(sf::IntRect(939, 146, 300, 346));
+        sprite.setScale(50.f / 300.f, 50.f / 346.f);
         break;
 
     default:

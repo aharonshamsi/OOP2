@@ -3,14 +3,47 @@
 GameStore::GameStore()
 	:m_backgroundStore("BackgroundStore.png"), m_runStore(false)
 {
+	loadAllObjects();
+
+	m_buttonStore.push_back(std::make_unique<Done>(ButtonData::LOC_DONE, ButtonData::SIZE_ICON_BUTTON));
+	m_buttonStore.push_back(std::make_unique<Cancel>(ButtonData::LOC_CANCEL, ButtonData::SIZE_ICON_BUTTON));
+}
+
+
+void GameStore::loadAllObjects()
+{
 	m_character.emplace_back(
-		std::make_unique<PlayerOne>(ButtonData::LOC_PAYER1, ButtonData::SIZE_BUY_PLAYER),
+		std::make_unique<PlayerAlpha>(ButtonData::LOC_PAYER_ALPHA, ButtonData::SIZE_BUY_PLAYER),
+		false
+	);
+
+	m_character.emplace_back(
+		std::make_unique<PlayerBeta>(ButtonData::LOC_PAYER_BETA, ButtonData::SIZE_BUY_PLAYER),
 		false
 	);
 
 
-	m_buttonStore.push_back(std::make_unique<Done>(ButtonData::LOC_DONE, ButtonData::SIZE_ICON_BUTTON));
-	m_buttonStore.push_back(std::make_unique<Cancel>(ButtonData::LOC_CANCEL, ButtonData::SIZE_ICON_BUTTON));
+	m_character.emplace_back(
+		std::make_unique<PlayerGamma>(ButtonData::LOC_PAYER_GAMMA, ButtonData::SIZE_BUY_PLAYER),
+		false
+	);
+
+
+	m_character.emplace_back(
+		std::make_unique<PlayerDelta>(ButtonData::LOC_PAYER_DELTA, ButtonData::SIZE_BUY_PLAYER),
+		false
+	);
+
+	m_character.emplace_back(
+		std::make_unique<PlayerEpsilon>(ButtonData::LOC_PAYER_EPSILON, ButtonData::SIZE_BUY_PLAYER),
+		false
+	);
+
+	m_character.emplace_back(
+		std::make_unique<PlayerZeta>(ButtonData::LOC_PAYER_ZETA, ButtonData::SIZE_BUY_PLAYER),
+		false
+	);
+
 }
 
 void GameStore::runStore(Info& info, sf::RenderWindow& window)

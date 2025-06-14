@@ -8,6 +8,13 @@ enum class TypeObject {
 	Obstacle,
 	player,
 	PlayerCharacters,
-	PlayerOne,
+
+	PlayeraAlpha,
+	PlayeraBeta,
+	PlayerGamma,
+	PlayerDelta,
+	PlayerEpsilon,
+	PlayerZeta,
+
 	count
 };

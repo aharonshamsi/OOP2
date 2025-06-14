@@ -1,5 +1,7 @@
 #pragma once
 #include "Button.h"
+#include "GameObject/Images/ImagesObject.h"
+#include "GameObject/Images/TypeObject.h"
 
 class CharactersButton : public Button
 {

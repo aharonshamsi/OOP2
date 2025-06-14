@@ -21,7 +21,11 @@ namespace ButtonData {
     // קבועים של דמויות חנות
     const sf::Vector2f SIZE_BUY_PLAYER = { 140.f, 140.f }; // גודל דמות שחקן בחנות
 
-    const sf::Vector2f LOC_PAYER1 = { 140.f, 290.f }; // מיקום דמות שחקן 1 בחנות
-
+    const sf::Vector2f LOC_PAYER_ALPHA= { 160.f, 295.f }; // מיקום דמות שחקן 1 בחנות
+    const sf::Vector2f LOC_PAYER_BETA = { 330.f, 295.f }; // מיקום דמות שחקן 2 בחנות
+    const sf::Vector2f LOC_PAYER_GAMMA = { 500.f, 295.f }; // מיקום דמות שחקן 3 בחנות
+    const sf::Vector2f LOC_PAYER_DELTA = { 160.f, 490.f }; // מיקום דמות שחקן 4 בחנות
+    const sf::Vector2f LOC_PAYER_EPSILON = { 330.f, 490.f }; // מיקום דמות שחקן 5 בחנות
+    const sf::Vector2f LOC_PAYER_ZETA = { 500.f, 490.f }; // מיקום דמות שחקן 6 בחנות
 
 }
