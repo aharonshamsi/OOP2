@@ -72,8 +72,8 @@ sf::Sprite ImagesObject::getSpritePlayer(const TypeObject& type)
     {
 
     case TypeObject::player:
-        sprite.setTextureRect(sf::IntRect(367, 785, 270, 263));
-        sprite.setScale(50.f / 270.f, 50.f / 263.f);
+        sprite.setTextureRect(sf::IntRect(269, 197, 295, 295)); // deffult Player
+        sprite.setScale(50.f / 295.f, 50.f / 295.f);
         break;
 
     case TypeObject::PlayeraAlpha:
