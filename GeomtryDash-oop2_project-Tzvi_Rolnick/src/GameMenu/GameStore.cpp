@@ -74,6 +74,7 @@ void GameStore::clickManager(Info& info, sf::RenderWindow& window)
 
 			for (int i = 0; i < m_character.size(); i++) {
 				if (m_character[i].first->isPressed(mousePos)) {
+					//to chack if i alrody buy this character
 					action = m_character[i].first->handleClick(info, window);
 					m_character[i].second = true; // but player
 				}
@@ -95,6 +96,7 @@ void GameStore::drawStore(sf::RenderWindow& window)
 {
 	for (int i = 0; i < m_character.size(); i++)
 		m_character[i].first->draw(window);
+
 
 	for (int i = 0; i < m_buttonStore.size(); i++)
 		m_buttonStore[i]->draw(window);

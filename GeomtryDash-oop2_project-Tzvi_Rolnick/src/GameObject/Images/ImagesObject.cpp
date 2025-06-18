@@ -1,13 +1,14 @@
 ﻿#include <stdexcept>
 #include "GameObject/Images/ImagesObject.h"
-
+#include <iostream>
 std::vector<sf::Texture> ImagesObject::m_imagesObject;
 
 
 
 void ImagesObject::loadAllImagesObject()
 {
-    m_imagesObject.resize(static_cast<int>(TypeObject::count));
+    m_imagesObject.resize(static_cast<int>(TypeObject::count) );
+    std::cout << static_cast<int>(TypeObject::count) << std::endl;
     loadImageSpriteSheet();
     loadPlayerCharacters();
 }
@@ -30,11 +31,13 @@ void ImagesObject::loadPlayerCharacters()
 
 sf::Sprite ImagesObject::getSpriteObject(const TypeObject& type)
 {
+    
     sf::Sprite sprite;
-    sprite.setTexture(m_imagesObject[static_cast<int>(TypeObject::SpriteSheet)]);
+
+   sprite.setTexture(m_imagesObject[static_cast<int>(TypeObject::SpriteSheet)]);
 
 
-    switch (type)
+   switch (type)
     {
 
     case TypeObject::Enemy:
@@ -65,9 +68,13 @@ sf::Sprite ImagesObject::getSpriteObject(const TypeObject& type)
 
 sf::Sprite ImagesObject::getSpritePlayer(const TypeObject& type)
 {
+    loadAllImagesObject();
+    /*m_imagesObject.resize(static_cast<int>(TypeObject::count));
+    loadImageSpriteSheet();
+    loadPlayerCharacters();*/
     sf::Sprite sprite;
-    sprite.setTexture(m_imagesObject[static_cast<int>(TypeObject::PlayerCharacters)]);
 
+    sprite.setTexture(m_imagesObject[static_cast<int>(TypeObject::PlayerCharacters)]);
     switch (type)
     {
 
@@ -108,7 +115,8 @@ sf::Sprite ImagesObject::getSpritePlayer(const TypeObject& type)
         break;
 
     default:
-        return sf::Sprite();
+       // return sf::Sprite();
+        std::cout << "\nError \n";
     }
 
     return sprite;

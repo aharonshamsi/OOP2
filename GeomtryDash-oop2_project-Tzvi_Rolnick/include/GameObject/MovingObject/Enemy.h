@@ -17,6 +17,7 @@ public:
 
 private:
 	sf::Vector2f m_direction = { 1.f, 0.f };	// Default direction to the right
+	static bool m_registerit;
 
 };
 

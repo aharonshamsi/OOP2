@@ -1,9 +1,15 @@
 #include "GameObject/MovingObject/Enemy.h"
 #include "GameObject/MovingObject/Player.h"
+#include "GameObject/Factory.h"
+#include "GameObject/Images/TypeObject.h"
 
 Enemy::Enemy(sf::Vector2f location, sf::Sprite sprite)
 	: MovingObject(location, sprite) {
 }
+bool Enemy::m_registerit = Factory::registerIt('@',
+	[](sf::Vector2f loc, const ImagesObject& images, const TypeObject) -> std::unique_ptr<Object> {
+		return std::make_unique<Enemy>(loc, images.getSpriteObject(TypeObject::Enemy));
+	});
 
 void Enemy::move(float deltaTime)
 {

@@ -6,7 +6,7 @@
 class Background {
 
 public:
-	Background(const std::string& nameFile);
+	Background(const std::string nameFile);
 
 	void draw(sf::RenderWindow& window);
 

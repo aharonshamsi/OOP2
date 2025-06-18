@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject/Object.h"
 #include <iostream>
-#include "Info.h"
+#include "Information.h"
 
 class MovingObject : public Object
 {
@@ -11,7 +11,7 @@ public:
 
 	virtual void move(float) = 0;
 	virtual bool isDead() const { return m_dead; }
-	virtual void updateDirection() {}; 
+	virtual void updateDirection() {}; // ????
 
 protected:
 	bool m_dead = false;

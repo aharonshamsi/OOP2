@@ -17,8 +17,11 @@ public:
 	TypeObject getTypePlayer() const { return m_typePlayer; }
 
 	bool buyPlayer(TypeObject type);
+	bool buyPlayer(TypeObject type,int price);
 
 private:
 	int m_numLevel;
 	TypeObject m_typePlayer = TypeObject::player;
+	int m_money = 0; // money of the player
+
 };

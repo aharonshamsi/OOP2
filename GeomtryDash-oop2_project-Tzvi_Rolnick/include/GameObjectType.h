@@ -11,8 +11,10 @@ enum class GameObjectType {
 	Done,
 	Cancel,
 
-	SpriteSheet,
-
+	playerOne,
+	//player,
+	//SmartEnemy,
+	//StupidEnemy,
 	count
 
 };

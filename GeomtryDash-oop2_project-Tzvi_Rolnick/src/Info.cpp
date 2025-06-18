@@ -7,6 +7,7 @@ Info::Info() :m_numLevel {1}
 
 void Info::draw(sf::RenderWindow& window)
 {
+
 	//...
 }
 
@@ -21,5 +22,15 @@ bool Info::buyPlayer(TypeObject type)
 	//}
 	//return false;
 
+}
+
+bool Info::buyPlayer(TypeObject type, int price)
+{
+	if (m_money >= price) {
+		m_typePlayer = type;
+		m_money -= price;
+		return true;
+	}
+	return false;
 }
 
