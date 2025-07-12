@@ -1,0 +1,16 @@
+# ninja log v6
+17	206	7740534617267060	C:/Users/Aharon/Documents/GitHub/OOP2/oop2_ex03/OOP2_ex03/out/build/x64-Debug/CMakeFiles/cmake.verify_globs	bf3c9a41890e8375
+434	8397	7740534621425824	CMakeFiles/oop2_ex03.dir/src/UnaryOperation.cpp.obj	cc8dc55151790316
+455	8402	7740534621605897	CMakeFiles/oop2_ex03.dir/src/main.cpp.obj	d2fa8296bb9df63d
+336	8407	7740534620425594	CMakeFiles/oop2_ex03.dir/src/Operation.cpp.obj	b6da284c3cc79b35
+239	8412	7740534619499745	CMakeFiles/oop2_ex03.dir/src/BinaryOperation.cpp.obj	41bcc15a5c3af832
+379	8417	7740534620853205	CMakeFiles/oop2_ex03.dir/src/SquareMatrix.cpp.obj	fb7aac07e6dd7e00
+416	8546	7740534621269143	CMakeFiles/oop2_ex03.dir/src/Transpose.cpp.obj	fa405bd0eb8617f6
+211	8651	7740534619210261	CMakeFiles/oop2_ex03.dir/src/Add.cpp.obj	73c5d5d98db40140
+396	8700	7740534621078317	CMakeFiles/oop2_ex03.dir/src/Sub.cpp.obj	5997300344608db7
+315	8785	7740534620238959	CMakeFiles/oop2_ex03.dir/src/Identity.cpp.obj	14cb061abb6ffc9
+275	8797	7740534619858800	CMakeFiles/oop2_ex03.dir/src/Comp.cpp.obj	fcfe8cf6f37ca309
+357	8854	7740534620690779	CMakeFiles/oop2_ex03.dir/src/Scalar.cpp.obj	67586f8ba91c6c0
+295	9950	7740534619996829	CMakeFiles/oop2_ex03.dir/src/FunctionCalculator.cpp.obj	88a4be493f773d7b
+9950	11074	7740534716556022	oop2_ex03.exe	3f08fea150388980
+15	79	7740534754938410	C:/Users/Aharon/Documents/GitHub/OOP2/oop2_ex03/OOP2_ex03/out/build/x64-Debug/CMakeFiles/cmake.verify_globs	bf3c9a41890e8375
