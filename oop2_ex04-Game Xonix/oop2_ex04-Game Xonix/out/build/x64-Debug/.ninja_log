@@ -1,0 +1,17 @@
+# ninja log v6
+21	89	7740535564226927	C:/Users/Aharon/Documents/GitHub/OOP2/oop2_ex04-Game Xonix/oop2_ex04-Game Xonix/out/build/x64-Debug/CMakeFiles/cmake.verify_globs	c5f1ca63ec46102b
+251	9805	7740535566529992	CMakeFiles/oop2_ex04.dir/src/Object.cpp.obj	f8f82025abb8d229
+290	9825	7740535566898591	CMakeFiles/oop2_ex04.dir/src/Tile.cpp.obj	e4f9bda9c1a4c8b9
+96	9855	7740535564873386	CMakeFiles/oop2_ex04.dir/src/Background.cpp.obj	ea5f0ce972f13c6d
+218	9909	7740535566177256	CMakeFiles/oop2_ex04.dir/src/Images.cpp.obj	7fdac893b02bc067
+162	9979	7740535565579411	CMakeFiles/oop2_ex04.dir/src/GameConsts.cpp.obj	368d8083ae9fea63
+142	10096	7740535565408093	CMakeFiles/oop2_ex04.dir/src/ErrorWindow.cpp.obj	4d8aa05bbf90bf2d
+181	10199	7740535565813749	CMakeFiles/oop2_ex04.dir/src/GameInfo.cpp.obj	3a34dedea480882f
+233	10446	7740535566354063	CMakeFiles/oop2_ex04.dir/src/MovingObject.cpp.obj	6973e89a2bd37de
+119	10715	7740535565182608	CMakeFiles/oop2_ex04.dir/src/Enemy.cpp.obj	3eb555e2fde1bd25
+268	11062	7740535566605354	CMakeFiles/oop2_ex04.dir/src/Player.cpp.obj	7533494eda7dfcac
+332	11119	7740535567329225	CMakeFiles/oop2_ex04.dir/src/main.cpp.obj	3e4484991df6ebb7
+307	11149	7740535567070413	CMakeFiles/oop2_ex04.dir/src/TileBoard.cpp.obj	d719e9eda337ad9
+200	11708	7740535565995083	CMakeFiles/oop2_ex04.dir/src/GameManager.cpp.obj	41446c82ddac0795
+11709	12965	7740535681044977	oop2_ex04.exe	ca7d693a09b6a989
+21	77	7740537237384355	C:/Users/Aharon/Documents/GitHub/OOP2/oop2_ex04-Game Xonix/oop2_ex04-Game Xonix/out/build/x64-Debug/CMakeFiles/cmake.verify_globs	c5f1ca63ec46102b
