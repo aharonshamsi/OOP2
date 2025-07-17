@@ -1,0 +1,13 @@
+# ninja log v6
+15	73	7744393255092166	C:/Users/Aharon/Documents/GitHub/OOP2/OOP2_EX01/out/build/x64-Debug/CMakeFiles/cmake.verify_globs	76abd9a86b0787ec
+230	7834	7744393257243852	CMakeFiles/oop2_ex01.dir/src/main.cpp.obj	ca3cabfcac871928
+156	7840	7744393256503967	CMakeFiles/oop2_ex01.dir/src/Operation.cpp.obj	8f7fa1880270bdea
+214	7868	7744393257085114	CMakeFiles/oop2_ex01.dir/src/Transpose.cpp.obj	ae851c5767901713
+77	7886	7744393255718465	CMakeFiles/oop2_ex01.dir/src/Add.cpp.obj	6bf51566302d522c
+170	7945	7744393256646761	CMakeFiles/oop2_ex01.dir/src/Scalar.cpp.obj	f12e970ce5b1c744
+138	7951	7744393256320967	CMakeFiles/oop2_ex01.dir/src/IdOperation.cpp.obj	da15a28ba22d2796
+201	7997	7744393256951286	CMakeFiles/oop2_ex01.dir/src/Sub.cpp.obj	ab032d0c8c7d42e0
+99	8086	7744393255928816	CMakeFiles/oop2_ex01.dir/src/Composite.cpp.obj	489dfd417d5670c5
+185	8215	7744393256792631	CMakeFiles/oop2_ex01.dir/src/SquareMatrix.cpp.obj	ddb51c919f46bb1
+121	8497	7744393256152239	CMakeFiles/oop2_ex01.dir/src/FunctionManager.cpp.obj	a13d4891ecf370d9
+8498	9520	7744393339906924	oop2_ex01.exe	872672ac93efecad
